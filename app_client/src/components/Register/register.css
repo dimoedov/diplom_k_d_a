@@ -1,0 +1,10 @@
+.form-horizontal{
+    display:block;
+    width:50%;
+    padding-top: 50px;
+    margin:0 auto;
+}
+.register_text{
+    padding-left: 40%;
+    padding-top: 20px;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "node-rest-auth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "stratServer": "nodemon node ./bin/www",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "passport-jwt": "^4.0.0",
+    "serve-favicon": "latest"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1"
+  }
+}
