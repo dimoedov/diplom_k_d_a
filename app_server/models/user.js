@@ -11,6 +11,18 @@ let UserSchema = new Schema({
   password: {
         type: String,
         required: true
+    },
+    last_name: {
+        type: String,
+        required: false
+    },
+    name: {
+        type: String,
+        required: false
+    },
+    middle_name: {
+        type: String,
+        required: false
     }
 });
 

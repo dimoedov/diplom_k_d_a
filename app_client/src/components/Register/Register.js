@@ -9,7 +9,13 @@ class Register extends Component {
         this.state= {
             username: '',
             password: '',
-            formErrors: {username: '', password: ''},
+            last_name: '',
+            name: '',
+            middle_name: '',
+            formErrors: {username: '', password: '', last_name: '', name: '', middle_name: ''},
+            last_nameValid: false,
+            nameValid: false,
+            middle_nameValid: false,
             usernameValid: false,
             passwordValid: false,
             formValid: false,
@@ -25,9 +31,24 @@ class Register extends Component {
 
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
+        let last_nameValid = this.state.last_nameValid;
+        let nameValid = this.state.nameValid;
+        let middle_nameValid = this.state.middle_nameValid;
         let usernameValid = this.state.usernameValid;
         let passwordValid = this.state.passwordValid;
         switch(fieldName) {
+            case 'name':
+                nameValid = /^[a-яёA-ЯЁ]$/.test(value);
+                fieldValidationErrors.name = nameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
+                break;
+            case 'middle_name':
+                middle_nameValid = /^[a-яёA-ЯЁ]$/.test(value);
+                fieldValidationErrors.middle_name = middle_nameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
+                break;
+            case 'last_name':
+                last_nameValid = /^[a-яёA-ЯЁ]$/.test(value);
+                fieldValidationErrors.last_name = last_nameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
+                break;
             case 'username':
                 usernameValid = /^[a-zA-Z][a-zA-Z0-9-_.]{5,20}$/.test(value);
                 fieldValidationErrors.username = usernameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
@@ -40,13 +61,16 @@ class Register extends Component {
                 break;
         }
         this.setState({formErrors: fieldValidationErrors,
+            last_nameValid: last_nameValid,
+            nameValid: nameValid,
+            middle_nameValid: middle_nameValid,
             usernameValid: usernameValid,
             passwordValid: passwordValid
         }, this.validateForm);
     }
 
     validateForm() {
-        this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
+        this.setState({formValid: this.state.usernameValid && this.state.last_nameValid && this.state.nameValid && this.state.middle_nameValid && this.state.passwordValid});
     }
 
     errorClass(error) {
@@ -73,9 +97,6 @@ class Register extends Component {
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err));
-            console.log(this.state.serverOtvet.success)
-        } else{
-            console.log('password = '+this.state.passwordValid+' login = '+this.state.usernameValid );
         }
     };
 
@@ -95,14 +116,35 @@ class Register extends Component {
                 <FormErrors formErrors={this.state.serverOtvet}/>
             <FormErrors formErrors={this.state.formErrors} />
             </div>
-            <div className={`form-group ${this.errorClass(this.state.formErrors.username)}`}>
-        <label htmlFor="username">Login:</label>
-            <input type="username" required className="form-control" name="username"
-            placeholder="username"
-            value={this.state.username}
+            <div className={`form-group ${this.errorClass(this.state.formErrors.name)}`}>
+        <label htmlFor="username">Имя:</label>
+            <input type="name" required className="form-control" name="name"
+            placeholder="Имя"
+            value={this.state.name}
             onChange={this.handleUserInput}  />
             </div>
-            <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
+            <div className={`form-group ${this.errorClass(this.state.formErrors.middle_name)}`}>
+                <label htmlFor="middle_name">Отчество:</label>
+                <input type="middle_name" required className="form-control" name="middle_name"
+                       placeholder="Отчество"
+                       value={this.state.middle_name}
+                       onChange={this.handleUserInput}  />
+            </div>
+                <div className={`form-group ${this.errorClass(this.state.formErrors.last_name)}`}>
+                    <label htmlFor="last_name">Фамилия:</label>
+                    <input type="last_name" required className="form-control" name="last_name"
+                           placeholder="Фамилия"
+                           value={this.state.last_name}
+                           onChange={this.handleUserInput}  />
+                </div>
+                <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
+                    <label htmlFor="username">Login:</label>
+                    <input type="username" required className="form-control" name="username"
+                           placeholder="username"
+                           value={this.state.username}
+                           onChange={this.handleUserInput}  />
+                </div>
+                <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
         <label htmlFor="password">Password:</label>
             <input type="password" required className="form-control" name="password"
             placeholder="Password"
