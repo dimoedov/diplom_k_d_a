@@ -11,10 +11,12 @@ router.post('/signup', function(req, res) {
     res.json({success: false, msg: 'Please pass username and password.'});
   } else {
     let newUser = new User({
+      last_name: req.body.last_name,
+      name: req.body.name,
+      middle_name: req.body.middle_name,
       username: req.body.username,
       password: req.body.password
     });
-    // save the user
     newUser.save(function(err) {
       if (err) {
         return res.json({success: false, msg: 'Username already exists.'});
@@ -32,17 +34,14 @@ router.post('/signin', function(req, res) {
     if (!user) {
       res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
-      // check if password matches
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (isMatch && !err) {
-          // if user is found and password is right create a token
           let token = jwt.sign(user.toJSON(), config.secret, {
             expiresIn: 60 // 1 min
           });
-          // return the information including token as JSON
           res.cookie('Authorized',token);
           res.cookie('id',user._id);
-          res.json({success: true, token: 'JWT ' + token});
+          res.json({success: true, user: user.last_name+' '+user.name, token: 'JWT ' + token});
         } else {
           res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
         }
@@ -50,6 +49,7 @@ router.post('/signin', function(req, res) {
     }
   });
 });
+
 router.get('/signout', function(req, res) {
   res.cookie('Authorized',null,{
     maxAge: 1

@@ -25,7 +25,7 @@ class Header extends Component {
                                         Курсовой проект сделал: Кузнецов Д.А.
                                     </div>
                                 </div>
-                                <div className="col-lg-8">
+                                <div className="col-lg-7">
                                     <nav className="topnav">
                                         <Switch>
                                             <Route exact path='/'>
@@ -96,8 +96,12 @@ class Header extends Component {
                                         </Switch>
                                     </nav>
                                 </div>
-                                <div className="col-lg-2">
-                                    <Link  to='/Signout'><button type="button " className="flex-column btn btn-primary btn-dark text-white btn-lg btn-block">Выйти</button></Link>
+                                <div className="butn_nav_bar col-lg-3">
+                                    <button type="button" className="butn_nav_bar flex-column btn btn-primary btn-dark text-white btn-lg btn-block">{localStorage.getItem('fio')}</button>
+                                    <ul className="submenu">
+                                        <Link  to='/Signout'><button type="button " className="flex-column btn btn-primary btn-secondary text-white btn-lg btn-block">Мои услуги</button></Link>
+                                        <Link  to='/Signout'><button type="button " className="flex-column btn btn-primary btn-secondary text-white btn-lg btn-block">Выйти</button></Link>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

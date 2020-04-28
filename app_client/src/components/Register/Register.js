@@ -38,16 +38,16 @@ class Register extends Component {
         let passwordValid = this.state.passwordValid;
         switch(fieldName) {
             case 'name':
-                nameValid = /^[a-яёA-ЯЁ]$/.test(value);
-                fieldValidationErrors.name = nameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
+                nameValid = /^[a-яёA-ЯЁ]{1,200}$/.test(value);
+                fieldValidationErrors.name = nameValid ? '' : 'поле должно содержать только русские буквы';
                 break;
             case 'middle_name':
-                middle_nameValid = /^[a-яёA-ЯЁ]$/.test(value);
-                fieldValidationErrors.middle_name = middle_nameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
+                middle_nameValid = /^[a-яёA-ЯЁ]{1,200}$/.test(value);
+                fieldValidationErrors.middle_name = middle_nameValid ? '' : 'поле должно содержать только русские буквы';
                 break;
             case 'last_name':
-                last_nameValid = /^[a-яёA-ЯЁ]$/.test(value);
-                fieldValidationErrors.last_name = last_nameValid ? '' : 'поле должно содержать 5-20 символов, которыми могут быть буквы и цифры, первый символ обязательно буква';
+                last_nameValid = /^[a-яёA-ЯЁ]{1,200}$/.test(value);
+                fieldValidationErrors.last_name = last_nameValid ? '' : 'поле должно содержать только русские буквы';
                 break;
             case 'username':
                 usernameValid = /^[a-zA-Z][a-zA-Z0-9-_.]{5,20}$/.test(value);
@@ -96,7 +96,8 @@ class Register extends Component {
                 body: formBody
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
-                .catch(err => console.log("err: =" + err));
+                .catch(err => console.log("err: =" + err))
+                .then(dt => console.log(this.state.serverOtvet));
         }
     };
 
