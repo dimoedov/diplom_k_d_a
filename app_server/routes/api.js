@@ -35,7 +35,9 @@ router.post('/signin', function(req, res) {
       res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
       user.comparePassword(req.body.password, function (err, isMatch) {
+        console.log(isMatch);
         if (isMatch && !err) {
+
           let token = jwt.sign(user.toJSON(), config.secret, {
             expiresIn: 60 // 1 min
           });
@@ -43,7 +45,7 @@ router.post('/signin', function(req, res) {
           res.cookie('id',user._id);
           res.json({success: true, user: user.last_name+' '+user.name, token: 'JWT ' + token});
         } else {
-          res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+          res.status(400).send({success: false, msg: 'Authentication failed. Wrong password.'});
         }
       });
     }
@@ -121,7 +123,7 @@ router.patch('/carfix/upgrade', function (req, res) {
     //   service: req.body.service,
     //   engineer: req.body.engineer,
     //   customer: req.cookies.id,
-    //   price: req.body.price
+    //   Price: req.body.Price
     // });
 
     CarFix.findById(req.body._id, (err, CarFix) => {
@@ -162,7 +164,7 @@ router.patch('/carfix/upgrade', function (req, res) {
     //     //     kind_of_work: req.body.kind_of_work,
     //     //     service: req.body.service,
     //     //     engineer: req.body.engineer,
-    //     //     price: req.body.price
+    //     //     Price: req.body.Price
     //     //   },
     //     {
     //       new: false

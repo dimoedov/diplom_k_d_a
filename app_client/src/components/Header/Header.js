@@ -22,29 +22,16 @@ class Header extends Component {
                             <div className="row" >
                                 <div className="col-lg-2">
                                     <div className="header__tel">
-                                        Курсовой проект сделал: Кузнецов Д.А.
+                                        OOO"БКОФ" / "BKOF" udp.
                                     </div>
                                 </div>
                                 <div className="col-lg-7">
                                     <nav className="topnav">
                                         <Switch>
-                                            <Route exact path='/'>
-                                                <ul className="nav nav-pills">
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white active" to='/' >О нас</Link>
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
-                                                    </li>
-                                                </ul>
-                                            </Route>
                                             <Route exact path='/Personal'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white"  to='/'> О нас</Link>
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white active" to='/Personal'>Добавление услуги</Link>
@@ -57,7 +44,7 @@ class Header extends Component {
                                             <Route exact path='/FormList'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/'> О нас</Link>
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
@@ -70,7 +57,7 @@ class Header extends Component {
                                             <Route exact path='/register'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/'> О нас</Link>
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
@@ -83,7 +70,20 @@ class Header extends Component {
                                             <Route exact path='/auth'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/'> О нас</Link>
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/price'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white active"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
@@ -115,7 +115,7 @@ class Header extends Component {
                             <div className="row" >
                                 <div className="col-lg-2">
                                     <div className="header__tel">
-                                        Курсовой проект сделал: Кузнецов Д.А.
+                                        OOO"БКОФ"  <br/> "BKOF" udp.
                                     </div>
                                 </div>
                                 <div className="col-lg-8">
@@ -123,6 +123,11 @@ class Header extends Component {
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white active" to='/'>О нас</Link>
+                                                    </li>
+                                                </ul>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white active" to='/Price'>Цены</Link>
                                                     </li>
                                                 </ul>
                                     </nav>
