@@ -82,11 +82,13 @@ class Register extends Component {
 
         if (this.state.formValid) {
             let formBody = [];
+            formBody.push(encodeURIComponent('position')+"="+encodeURIComponent(''));
             for (let prop in this.state) {
                 let encodedKey = encodeURIComponent(prop);
                 let encodedValue = encodeURIComponent(this.state[prop]);
                 formBody.push(encodedKey + "=" + encodedValue);
             }
+
             formBody = formBody.join("&");
             fetch('/api/signup', {
                 method: 'post',
@@ -118,19 +120,6 @@ class Register extends Component {
             <FormErrors formErrors={this.state.formErrors} />
             </div>
             <div className={`form-group ${this.errorClass(this.state.formErrors.name)}`}>
-        <label htmlFor="username">Имя:</label>
-            <input type="name" required className="form-control" name="name"
-            placeholder="Имя"
-            value={this.state.name}
-            onChange={this.handleUserInput}  />
-            </div>
-            <div className={`form-group ${this.errorClass(this.state.formErrors.middle_name)}`}>
-                <label htmlFor="middle_name">Отчество:</label>
-                <input type="middle_name" required className="form-control" name="middle_name"
-                       placeholder="Отчество"
-                       value={this.state.middle_name}
-                       onChange={this.handleUserInput}  />
-            </div>
                 <div className={`form-group ${this.errorClass(this.state.formErrors.last_name)}`}>
                     <label htmlFor="last_name">Фамилия:</label>
                     <input type="last_name" required className="form-control" name="last_name"
@@ -138,6 +127,20 @@ class Register extends Component {
                            value={this.state.last_name}
                            onChange={this.handleUserInput}  />
                 </div>
+                <label htmlFor="username">Имя:</label>
+                <input type="name" required className="form-control" name="name"
+                placeholder="Имя"
+                value={this.state.name}
+                onChange={this.handleUserInput}  />
+                </div>
+                <div className={`form-group ${this.errorClass(this.state.formErrors.middle_name)}`}>
+                <label htmlFor="middle_name">Отчество:</label>
+                <input type="middle_name" required className="form-control" name="middle_name"
+                       placeholder="Отчество"
+                       value={this.state.middle_name}
+                       onChange={this.handleUserInput}  />
+                </div>
+
                 <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
                     <label htmlFor="username">Login:</label>
                     <input type="username" required className="form-control" name="username"
@@ -146,12 +149,12 @@ class Register extends Component {
                            onChange={this.handleUserInput}  />
                 </div>
                 <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-        <label htmlFor="password">Password:</label>
-            <input type="password" required className="form-control" name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleUserInput}  />
-            </div>
+                <label htmlFor="password">Password:</label>
+                    <input type="password" required className="form-control" name="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handleUserInput}  />
+                </div>
             <input type="submit" className="btn btn-dark btn-primary" onSubmit={this.handleSubmit} value='Отправить'/>
                 </form>
                 </div>

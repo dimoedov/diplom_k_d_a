@@ -30,7 +30,7 @@ const MyExportCSV = (props) => {
 };
 
 let formBody = [];
-class Price extends Component{
+class Users extends Component{
 
     state = {
         serverOtvet: '',
@@ -40,19 +40,39 @@ class Price extends Component{
                 dataField: '_id',
                 isKey: true,
                 text: 'Номер услуги',
+                hidden: true,
+                selected: false,
+
+            },
+            {
+                dataField: 'username',
+                text: 'username',
+                sort: true,
+                selected: false,
+                editable: false
+            },
+            {
+                dataField: 'last_name',
+                text: 'Фамилия',
                 sort: true,
                 selected: false,
             },
             {
                 dataField: 'name',
-                text: 'Наименование',
+                text: 'Фамилия',
+                sort: true,
+                selected: false,
+            },
+            {
+                dataField: 'middle_name',
+                text: 'отчество',
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
-                            message: 'Услуга вводится без цифр'
+                            message: 'Должность вводится с большой буквы и через пробел без цифр'
                         };
                     }
                     formBody = [];
@@ -69,7 +89,8 @@ class Price extends Component{
 
                     }
                     formBody = formBody.join("&");
-                    fetch('/api/service/upgrade', {
+                    console.log(formBody);
+                    fetch('/api/users/upgrade', {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -77,27 +98,21 @@ class Price extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Price/'))
+                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
-                }
+                },
             },
             {
-                dataField: 'price',
-                text: 'цена',
+                dataField: 'position',
+                text: 'Должность',
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
-                    if (!regExpPrice.test(newValue)) {
+                    if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
-                            message: 'Цена должна быть числовой'
-                        };
-                    }
-                    if (newValue < 100) {
-                        return {
-                            valid: false,
-                            message: 'Цена должна быть больше 100'
+                            message: 'Должность вводится с большой буквы и через пробел без цифр'
                         };
                     }
                     formBody = [];
@@ -114,7 +129,8 @@ class Price extends Component{
 
                     }
                     formBody = formBody.join("&");
-                    fetch('/api/service/upgrade', {
+                    console.log(formBody);
+                    fetch('/api/users/upgrade', {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -122,38 +138,15 @@ class Price extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Price'))
+                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
-                }
-            },
-            {
-                dataField: 'dostyp',
-                text: 'Доступность',
-                sort: true,
-                selected: false,
-                formatter: (cellContent, row) => {
-                    if (row.inStock) {
-                        return (
-                            <h5>
-                                <span className="label label-success"> Available</span>
-                            </h5>
-                        );
-                    }
-                    return (
-                        <h5>
-                            <span className="label label-danger"> Backordered</span>
-                        </h5>
-                    );
                 },
-                editor:{
-                    type: Type.CHECKBOX
-                }
             }],
         selected: []
     };
     componentDidMount() {
-        fetch('/api/service').then(res => res.json())
+        fetch('/api/users').then(res => res.json())
             .then(data => this.setState({products: data}))
             .catch(err => console.log("err: =" + err));
     };
@@ -166,7 +159,7 @@ class Price extends Component{
                 formBody.push(encodedKey + "=" + encodedValue);
             }
             formBody = formBody.join("&");
-            fetch('/api/service/delete/'+this.state.selected, {
+            fetch('/api/users/delete/'+this.state.selected, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -175,7 +168,7 @@ class Price extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err))
-                .then(del =>  window.location.assign('http://localhost:3000/Price'));
+                .then(del =>  window.location.assign('http://localhost:3000/Users'));
 
         }
 
@@ -232,7 +225,7 @@ class Price extends Component{
                 return {};
             }
         };
-        if (get_cookie('Authorized') === null){
+        if ((get_cookie('Authorized') === null) || (localStorage.getItem('position') !== 'Администратор')){
             return (
                 <div className="container" style={{ marginTop: 50 }}>
                     <div>
@@ -265,7 +258,7 @@ class Price extends Component{
                                             hover
                                             tabIndexCell
                                             bordered={ false }
-                                            noDataIndication="Таблица не заполнена, просьба обратиться в контакный центр"
+                                            noDataIndication="Пользователей не существует"
 
                                             { ...props.baseProps }
                                         />
@@ -320,7 +313,7 @@ class Price extends Component{
                                             hover
                                             tabIndexCell
                                             bordered={ false }
-                                            noDataIndication="Услуг не существует"
+                                            noDataIndication="Пользователей не существует"
 
                                             { ...props.baseProps }
                                         />
@@ -336,4 +329,4 @@ class Price extends Component{
     }
 }
 
-export default  Price
+export default  Users;

@@ -8,6 +8,7 @@ import Signout from "../Signout/Signout";
 import FormList from "../FormList/FormList";
 import Error from "../Error/Error";
 import Price from "../Price/Price";
+import Users from "../Users/users";
 
 function Main() {
     return (
@@ -21,6 +22,7 @@ function Main() {
                         <Route path='/Signout' component={Signout}/>
                         <Route path='/FormList' component={FormList}/>
                         <Route path='/Price' component={Price}/>
+                        <Route path='/Users' component={Users}/>
                         <Route path="*" component={Error} status={404}/>
                     </Switch>
                 </Suspense>

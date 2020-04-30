@@ -34,10 +34,23 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white active" to='/Personal'>Добавление услуги</Link>
+                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Users'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white active" to='/Users'>Работники</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
@@ -47,10 +60,10 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
-                                                    </li>
-                                                    <li className="nav-item">
                                                         <Link className="nav-link active text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                     <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
@@ -60,10 +73,10 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
-                                                    </li>
-                                                    <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                     <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
@@ -73,10 +86,10 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
-                                                    </li>
-                                                    <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                     <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
@@ -86,10 +99,10 @@ class Header extends Component {
                                                         <Link className="nav-link text-white active"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Personal'>Добавление услуги</Link>
-                                                    </li>
-                                                    <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                    </li>
+                                                     <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
@@ -120,16 +133,20 @@ class Header extends Component {
                                 </div>
                                 <div className="col-lg-8">
                                     <nav className="topnav">
-                                                <ul className="nav nav-pills">
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white active" to='/'>О нас</Link>
-                                                    </li>
-                                                </ul>
-                                                <ul className="nav nav-pills">
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white active" to='/Price'>Цены</Link>
-                                                    </li>
-                                                </ul>
+                                        <ul className="nav nav-pills">
+                                            <li className="nav-item">
+                                                <Link className="nav-link text-white active" to='/'>О нас</Link>
+                                            </li>
+                                        </ul>
+                                        <ul className="nav nav-pills">
+                                            <li className="nav-item">
+                                                <Link className="nav-link text-white active" to='/Price'>Цены</Link>
+                                            </li>
+                                        </ul>
+                                        <li className="nav-item">
+                                            <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                        </li>
+
                                     </nav>
                                 </div>
                                 <div className="col-lg-2">

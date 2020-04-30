@@ -3,7 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 
 const get_cookie = ( cookie_name ) =>
 {
-    var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+    let results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
 
     if ( results )
         return ( unescape ( results[2] ) );
@@ -26,7 +26,10 @@ class Signout extends Component {
     };
 
     render() {
-        if (this.state.serverOtvet.success) window.location.assign('http://localhost:3000/');
+        if (this.state.serverOtvet.success) {
+            localStorage.clear();
+            window.location.assign('http://localhost:3000/');
+        }
         if (get_cookie('Authorized') === null){
             return <Redirect to="/" />;
         }else {

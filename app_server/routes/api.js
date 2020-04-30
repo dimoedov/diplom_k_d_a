@@ -18,7 +18,8 @@ router.post('/signup', function(req, res) {
       name: req.body.name,
       middle_name: req.body.middle_name,
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
+      position: req.body.position
     });
     newUser.save(function(err) {
       if (err) {
@@ -46,7 +47,7 @@ router.post('/signin', function(req, res) {
           });
           res.cookie('Authorized',token);
           res.cookie('id',user._id);
-          res.json({success: true, user: user.last_name+' '+user.name, token: 'JWT ' + token});
+          res.json({success: true,position: user.position, user: user.last_name+' '+user.name, token: 'JWT ' + token});
         } else {
           res.status(400).send({success: false, msg: 'Authentication failed. Wrong password.'});
         }
@@ -207,7 +208,6 @@ router.patch('/service/upgrade', function (req, res) {
       if(err){
         return res.json({success: false, msg: 'Not found.'});
       }
-      console.log(req.body);
       if(req.body.name){
         Service.name = req.body.name;
       }
@@ -226,8 +226,71 @@ router.patch('/service/upgrade', function (req, res) {
 
     });
   }
-
-
 });
+
+router.get('/users', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    User.find((err, User) => {
+      if (err) return next(err);
+      res.json(User);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.delete('/users/delete/:id', function (req, res) {
+  let mass = req.body.selected.split(',');
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    User.deleteMany({
+      _id: mass
+    }, function (err) {
+      if (err) {
+        return res.json({success: false, msg: 'Delete User failed.'});
+      } else {
+        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
+      }
+    })
+  }
+});
+
+router.patch('/users/upgrade', function (req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null){
+    User.findById(req.body._id, (err, User) => {
+      if(err){
+        return res.json({success: false, msg: 'Not found.'});
+      }
+      if(req.body.username){
+        User.username = req.body.username;
+      }
+      if(req.body.password){
+        User.password = req.body.password;
+      }
+      if(req.body.last_name){
+        User.last_name = req.body.last_name;
+      }
+      if(req.body.name){
+        User.name = req.body.name;
+      }
+      if(req.body.middle_name){
+        User.middle_name = req.body.middle_name;
+      }
+      if(req.body.position){
+        User.position = req.body.position;
+      }
+      User.save((err, data) => {
+        if(err){
+          return res.json({success: false, msg: 'Update CarFix failed.'});
+        }
+        return res.json({success: true, msg: 'Successful Update ' + data});
+      });
+
+    });
+  }
+});
+
 
 module.exports = router;

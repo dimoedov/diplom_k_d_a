@@ -23,6 +23,10 @@ let UserSchema = new Schema({
     middle_name: {
         type: String,
         required: false
+    },
+    position: {
+        type: String,
+        required: false
     }
 });
 
