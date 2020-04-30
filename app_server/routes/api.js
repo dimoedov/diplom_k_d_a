@@ -5,6 +5,9 @@ let jwt = require('jsonwebtoken');
 let router = express.Router();
 let User = require("../models/user");
 let CarFix = require("../models/carfix");
+let Service = require("../models/service");
+let Object = require("../models/object");
+let client = require("../models/client");
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -114,18 +117,6 @@ let mass = req.body.selected.split(',');
 router.patch('/carfix/upgrade', function (req, res) {
   let token = req.cookies.Authorized;
   if (token !== null){
-    // let query ={id: req.body._id,
-    //   customer: req.cookies.id};
-    // let update = {kind_of_work: req.body.kind_of_work};
-    // // let options = {new: true};
-    // let newCarFix = new CarFix({
-    //   kind_of_work: req.body.kind_of_work,
-    //   service: req.body.service,
-    //   engineer: req.body.engineer,
-    //   customer: req.cookies.id,
-    //   Price: req.body.Price
-    // });
-
     CarFix.findById(req.body._id, (err, CarFix) => {
       if(err){
         return res.json({success: false, msg: 'Not found.'});
@@ -156,28 +147,84 @@ router.patch('/carfix/upgrade', function (req, res) {
       });
 
     });
+  }
 
-    // CarFix.findOneAndUpdate(query,
-    //      newCarFix,
-    //     // {_id  : req.params.id},
-    //     // {
-    //     //     kind_of_work: req.body.kind_of_work,
-    //     //     service: req.body.service,
-    //     //     engineer: req.body.engineer,
-    //     //     Price: req.body.Price
-    //     //   },
-    //     {
-    //       new: false
-    //     },
-    //     function (err, data) {
-    //       console.log(data);
-    //       console.log(err);
-    //       if (err) {
-    //     return res.json({success: false, msg: 'Update CarFix failed.'});
-    //   } else {
-    //     return res.json({success: true, msg: 'Successful Update ' + req.params.id});
-    //   }
-    // });
+
+});
+
+router.post('/service', function(req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    let newService = new Service({
+      name: req.body.name,
+      price: req.body.price,
+      dostyp: req.body.dostyp
+    });
+
+    newService.save(function(err) {
+      if (err) {
+        return res.json({success: false, msg: 'Save Service failed.'});
+      }
+      res.json({success: true, msg: 'Successful created new Service.'});
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.get('/service', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    Service.find((err, Service) =>{
+      if (err) return next(err);
+      res.json(Service);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.delete('/service/delete/:id', function (req, res) {
+  let mass = req.body.selected.split(',');
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    Service.deleteMany({
+      _id: mass
+    }, function (err) {
+      if (err) {
+        return res.json({success: false, msg: 'Delete Service failed.'});
+      } else {
+        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
+      }
+    })
+  }
+});
+
+router.patch('/service/upgrade', function (req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null){
+    Service.findById(req.body._id, (err, Service) => {
+      if(err){
+        return res.json({success: false, msg: 'Not found.'});
+      }
+      console.log(req.body);
+      if(req.body.name){
+        Service.name = req.body.name;
+      }
+      if(req.body.price){
+        Service.price = req.body.price;
+      }
+      if(req.body.dostyp){
+        Service.dostyp = req.body.dostyp;
+      }
+      Service.save((err, data) => {
+        if(err){
+          return res.json({success: false, msg: 'Update Service failed.'});
+        }
+        return res.json({success: true, msg: 'Successful Update ' + data});
+      });
+
+    });
   }
 
 
