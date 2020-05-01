@@ -4,7 +4,7 @@ let express = require('express');
 let jwt = require('jsonwebtoken');
 let router = express.Router();
 let User = require("../models/user");
-let CarFix = require("../models/carfix");
+let CarFix = require("../models/fix");
 let Service = require("../models/service");
 let Object = require("../models/object");
 let client = require("../models/client");
@@ -292,5 +292,157 @@ router.patch('/users/upgrade', function (req, res) {
   }
 });
 
+router.post('/clients', function(req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    let newClient = new client({
+      name: req.body.name,
+      type: req.body.type,
+      contacts: req.body.contacts
+    });
+
+    newClient.save(function(err) {
+      if (err) {
+        return res.json({success: false, msg: 'Save client failed.'});
+      }
+      res.json({success: true, msg: 'Successful created new client.'});
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.get('/clients', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    client.find((err, client) =>{
+      if (err) return next(err);
+      res.json(client);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.delete('/clients/delete/:id', function (req, res) {
+  let mass = req.body.selected.split(',');
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    client.deleteMany({
+      _id: mass
+    }, function (err) {
+      if (err) {
+        return res.json({success: false, msg: 'Delete client failed.'});
+      } else {
+        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
+      }
+    })
+  }
+});
+
+router.patch('/clients/upgrade', function (req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null){
+    client.findById(req.body._id, (err, client) => {
+      if(err){
+        return res.json({success: false, msg: 'Not found.'});
+      }
+      if(req.body.name){
+        client.name = req.body.name;
+      }
+      if(req.body.type){
+        client.type = req.body.type;
+      }
+      if(req.body.contacts){
+        client.contacts = req.body.contacts;
+      }
+      client.save((err, data) => {
+        if(err){
+          return res.json({success: false, msg: 'Update clients failed.'});
+        }
+        return res.json({success: true, msg: 'Successful Update ' + data});
+      });
+
+    });
+  }
+});
+
+router.post('/objects', function(req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    let newObject = new Object({
+      name: req.body.name,
+      date_start: req.body.date_start,
+      company: req.body.company,
+      project: req.body.project,
+      call: req.body.call,
+      etc: req.body.etc
+    });
+
+    newObject.save(function(err) {
+      if (err) {
+        return res.json({success: false, msg: 'Save objects failed.'});
+      }
+      res.json({success: true, msg: 'Successful created new client.'});
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.get('/objects', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    Object.find((err, client) =>{
+      if (err) return next(err);
+      res.json(client);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.delete('/objects/delete/:id', function (req, res) {
+  let mass = req.body.selected.split(',');
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    Object.deleteMany({
+      _id: mass
+    }, function (err) {
+      if (err) {
+        return res.json({success: false, msg: 'Delete Object failed.'});
+      } else {
+        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
+      }
+    })
+  }
+});
+
+router.patch('/objects/upgrade', function (req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null){
+    Object.findById(req.body._id, (err, Object) => {
+      if(err){
+        return res.json({success: false, msg: 'Not found.'});
+      }
+      if(req.body.name){
+        Object.name = req.body.name;
+      }
+      if(req.body.type){
+        Object.type = req.body.type;
+      }
+      if(req.body.contacts){
+        Object.contacts = req.body.contacts;
+      }
+      Object.save((err, data) => {
+        if(err){
+          return res.json({success: false, msg: 'Update Object failed.'});
+        }
+        return res.json({success: true, msg: 'Successful Update ' + data});
+      });
+
+    });
+  }
+});
 
 module.exports = router;

@@ -30,7 +30,7 @@ const MyExportCSV = (props) => {
 };
 
 let formBody = [];
-class Users extends Component{
+class Object extends Component{
 
     state = {
         serverOtvet: '',
@@ -40,181 +40,44 @@ class Users extends Component{
                 dataField: '_id',
                 isKey: true,
                 text: 'Номер услуги',
-                hidden: true,
-                selected: false,
-
-            },
-            {
-                dataField: 'username',
-                text: 'username',
                 sort: true,
                 selected: false,
-                editable: false
             },
             {
-                dataField: 'last_name',
-                text: 'Фамилия',
+                dataField: 'date_start',
+                text: 'Дата производства',
                 sort: true,
                 selected: false,
-                validator: (newValue, row, column) => {
-                    if (!regExpName.test(newValue)) {
-                        return {
-                            valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
-                        };
-                    }
-                    formBody = [];
-                    for (let prop in row) {
-                        if (prop === column.dataField){
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(newValue);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }else {
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(row[prop]);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }
-
-                    }
-                    formBody = formBody.join("&");
-                    console.log(formBody);
-                    fetch('/api/users/upgrade', {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body:formBody
-                    }).then(res => res.json())
-                        .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
-                        .catch(err => console.log("err: =" + err));
-                    return true;
-                },
             },
             {
-                dataField: 'name',
-                text: 'Фамилия',
+                dataField: 'company',
+                text: 'Владеющая компания',
                 sort: true,
                 selected: false,
-                validator: (newValue, row, column) => {
-                    if (!regExpName.test(newValue)) {
-                        return {
-                            valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
-                        };
-                    }
-                    formBody = [];
-                    for (let prop in row) {
-                        if (prop === column.dataField){
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(newValue);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }else {
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(row[prop]);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }
-
-                    }
-                    formBody = formBody.join("&");
-                    console.log(formBody);
-                    fetch('/api/users/upgrade', {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body:formBody
-                    }).then(res => res.json())
-                        .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
-                        .catch(err => console.log("err: =" + err));
-                    return true;
-                },
             },
             {
-                dataField: 'middle_name',
-                text: 'отчество',
+                dataField: 'project',
+                text: 'проект',
                 sort: true,
                 selected: false,
-                validator: (newValue, row, column) => {
-                    if (!regExpName.test(newValue)) {
-                        return {
-                            valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
-                        };
-                    }
-                    formBody = [];
-                    for (let prop in row) {
-                        if (prop === column.dataField){
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(newValue);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }else {
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(row[prop]);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }
-
-                    }
-                    formBody = formBody.join("&");
-                    console.log(formBody);
-                    fetch('/api/users/upgrade', {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body:formBody
-                    }).then(res => res.json())
-                        .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
-                        .catch(err => console.log("err: =" + err));
-                    return true;
-                },
             },
             {
-                dataField: 'position',
-                text: 'Должность',
+                dataField: 'call',
+                text: 'позывной',
                 sort: true,
                 selected: false,
-                validator: (newValue, row, column) => {
-                    if (!regExpName.test(newValue)) {
-                        return {
-                            valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
-                        };
-                    }
-                    formBody = [];
-                    for (let prop in row) {
-                        if (prop === column.dataField){
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(newValue);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }else {
-                            let encodedKey = encodeURIComponent(prop);
-                            let encodedValue = encodeURIComponent(row[prop]);
-                            formBody.push(encodedKey + "=" + encodedValue);
-                        }
-
-                    }
-                    formBody = formBody.join("&");
-                    console.log(formBody);
-                    fetch('/api/users/upgrade', {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body:formBody
-                    }).then(res => res.json())
-                        .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
-                        .catch(err => console.log("err: =" + err));
-                    return true;
-                },
-            }],
+            },
+            {
+                dataField: 'etc',
+                text: 'Примечание',
+                sort: true,
+                selected: false,
+            }
+            ],
         selected: []
     };
     componentDidMount() {
-        fetch('/api/users').then(res => res.json())
+        fetch('/api/objects').then(res => res.json())
             .then(data => this.setState({products: data}))
             .catch(err => console.log("err: =" + err));
     };
@@ -227,7 +90,7 @@ class Users extends Component{
                 formBody.push(encodedKey + "=" + encodedValue);
             }
             formBody = formBody.join("&");
-            fetch('/api/users/delete/'+this.state.selected, {
+            fetch('/api/objects/delete/'+this.state.selected, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -236,7 +99,7 @@ class Users extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err))
-                .then(del =>  window.location.assign('http://localhost:3000/Users'));
+                .then(del =>  window.location.assign('http://localhost:3000/Object'));
 
         }
 
@@ -293,7 +156,7 @@ class Users extends Component{
                 return {};
             }
         };
-        if ((get_cookie('Authorized') === null) || (localStorage.getItem('position') !== 'Администратор')){
+        if (get_cookie('Authorized') === null){
             return (
                 <div className="container" style={{ marginTop: 50 }}>
                     <div>
@@ -301,11 +164,21 @@ class Users extends Component{
                             keyField={'_id'}
                             data={ this.state.products }
                             columns={ this.state.columns }
+                            exportCSV={ {
+                                fileName: 'Price_list.csv',
+                                separator: "    ",
+                                noAutoBOM: false,
+                                blobType: 'text/csv; charset = utf-8'
+                            } }
                         >
                             {
                                 props => (
                                     <div>
-                                        <h5>Количество персонала:<span className="badge">{ this.state.rowCount }</span></h5>
+                                        <div className='btn-group'>
+                                            <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
+                                        </div>
+                                        <hr />
+                                        <h5>Row Count:<span className="badge">{ this.state.rowCount }</span></h5>
                                         <BootstrapTable
                                             onDataSizeChange={ this.handleDataChange }
                                             keyField={'_id'}
@@ -316,7 +189,7 @@ class Users extends Component{
                                             hover
                                             tabIndexCell
                                             bordered={ false }
-                                            noDataIndication="Пользователей не существует"
+                                            noDataIndication="Таблица не заполнена, просьба обратиться в контакный центр"
 
                                             { ...props.baseProps }
                                         />
@@ -371,7 +244,7 @@ class Users extends Component{
                                             hover
                                             tabIndexCell
                                             bordered={ false }
-                                            noDataIndication="Пользователей не существует"
+                                            noDataIndication="Услуг не существует"
 
                                             { ...props.baseProps }
                                         />
@@ -387,4 +260,4 @@ class Users extends Component{
     }
 }
 
-export default  Users;
+export default  Object

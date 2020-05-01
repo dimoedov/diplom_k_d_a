@@ -143,10 +143,11 @@ class Header extends Component {
                                                 <Link className="nav-link text-white active" to='/Price'>Цены</Link>
                                             </li>
                                         </ul>
-                                        <li className="nav-item">
-                                            <Link className="nav-link text-white" to='/Users'>Работники</Link>
-                                        </li>
-
+                                        <ul className="nav nav-pills">
+                                            <li className="nav-item">
+                                                <Link className="nav-link text-white active" to='/Users'>Работники</Link>
+                                            </li>
+                                        </ul>
                                     </nav>
                                 </div>
                                 <div className="col-lg-2">

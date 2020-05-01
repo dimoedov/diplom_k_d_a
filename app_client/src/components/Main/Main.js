@@ -9,6 +9,9 @@ import FormList from "../FormList/FormList";
 import Error from "../Error/Error";
 import Price from "../Price/Price";
 import Users from "../Users/users";
+import Add_clent from "../Add_client/Add_clent";
+import Object from "../Object/Object";
+import Client from "../Client/Client";
 
 function Main() {
     return (
@@ -23,6 +26,12 @@ function Main() {
                         <Route path='/FormList' component={FormList}/>
                         <Route path='/Price' component={Price}/>
                         <Route path='/Users' component={Users}/>
+                        <Route path='/Objects' component={Object}/>
+                        <Route path='/Clients' component={Client}/>
+                        <Route path='/Add_clent' component={Add_clent}/>
+                        {/*<Route path='/Add_clent' component={Add_ob}/>*/}
+                        {/*<Route path='/Add_clent' component={Add_clent}/>*/}
+                        {/*<Route path='/Add_clent' component={Add_clent}/>*/}
                         <Route path="*" component={Error} status={404}/>
                     </Switch>
                 </Suspense>

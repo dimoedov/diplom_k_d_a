@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb1365a-3513-48fa-b81a-a1112417be30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Users/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_clent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_service/Add_service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_users/Add_users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Register/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Signout/Signout.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Signout/Signout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Users/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/carfix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,17 +48,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app_server/package.json" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app_client/src/components/Add_users" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_users" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_service" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_object" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_client" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\kursovaya\client\src\components\Error" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\FiliusDM\Documents\GitHub\kursovaya\client\src\components\Error" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -67,28 +74,8 @@
     </option>
   </component>
   <component name="RunManager" selected="npm.Запуск клиента">
-    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm" temporary="true">
-      <package-json value="$PROJECT_DIR$/app_server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="startNodemon" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="Запуск клиента" type="js.build_tools.npm" temporary="true">
-      <package-json value="$PROJECT_DIR$/app_client/package.json" />
       <command value="run" />
       <scripts>
         <script value="start" />
@@ -107,12 +94,33 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="Запуск клиента" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/app_client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/app_server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="startNodemon" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="npm.запуск сервера в режиме отладки" />
+      <item itemvalue="npm.Запуск сервера в режиме настройки" />
       <item itemvalue="npm.Запуск клиента" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.Запуск сервера в режиме настройки" />
         <item itemvalue="npm.Запуск клиента" />
       </list>
     </recent_temporary>
@@ -190,6 +198,7 @@
       <workItem from="1588157872552" duration="5652000" />
       <workItem from="1588243373262" duration="2954000" />
       <workItem from="1588252310393" duration="6846000" />
+      <workItem from="1588326308578" duration="6956000" />
     </task>
     <servers />
   </component>
@@ -216,28 +225,28 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="447" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243409890" />
-    <state width="1595" height="212" key="GridCell.Tab.0.bottom" timestamp="1588261192480">
+    <state width="1595" height="212" key="GridCell.Tab.0.bottom" timestamp="1588336730200">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588261192480" />
+    <state width="1595" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
     <state width="1579" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.bottom/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.center" timestamp="1588261192480">
+    <state width="1595" height="212" key="GridCell.Tab.0.center" timestamp="1588336730200">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588261192480" />
+    <state width="1595" height="212" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
     <state width="1579" height="255" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.center/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.left" timestamp="1588261192480">
+    <state width="1595" height="212" key="GridCell.Tab.0.left" timestamp="1588336730200">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588261192480" />
+    <state width="1595" height="212" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
     <state width="1579" height="255" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.left/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.right" timestamp="1588261192480">
+    <state width="1595" height="212" key="GridCell.Tab.0.right" timestamp="1588336730200">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588261192480" />
+    <state width="1595" height="212" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
     <state width="1579" height="255" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.right/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
     <state x="616" y="250" key="run.anything.popup" timestamp="1583298197252">

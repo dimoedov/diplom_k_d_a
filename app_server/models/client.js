@@ -4,15 +4,15 @@ let Schema = mongoose.Schema;
 let ClientSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: false
     },
     type: {
         type: String,
-        required: true
+        required: false
     },
     contacts: {
         type: String,
-        required: true
+        required: false
     }
 });
 
