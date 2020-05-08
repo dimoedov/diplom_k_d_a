@@ -18,7 +18,7 @@ let ObjectSchema = new Schema({
         type: String,
         required: true
     },
-    call: {
+    calle: {
         type: String,
         required: true
     },

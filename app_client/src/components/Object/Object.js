@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory from "react-bootstrap-table2-filter";
-import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
+import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-const regExpPrice = /^\d+$/;
-const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
+// const regExpPrice = /^\d+$/;
+// const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
 
 const get_cookie = ( cookie_name ) =>
 {
@@ -30,7 +30,7 @@ const MyExportCSV = (props) => {
 };
 
 let formBody = [];
-class Object extends Component{
+class Object_table extends Component{
 
     state = {
         serverOtvet: '',
@@ -40,7 +40,7 @@ class Object extends Component{
                 dataField: '_id',
                 isKey: true,
                 text: 'Номер услуги',
-                sort: true,
+                hidden: true,
                 selected: false,
             },
             {
@@ -156,42 +156,36 @@ class Object extends Component{
                 return {};
             }
         };
-        if (get_cookie('Authorized') === null){
+        if (get_cookie('Authorized') === null) {
             return (
-                <div className="container" style={{ marginTop: 50 }}>
+                <div className="container" style={{marginTop: 50}}>
                     <div>
                         <ToolkitProvider
                             keyField={'_id'}
-                            data={ this.state.products }
-                            columns={ this.state.columns }
-                            exportCSV={ {
-                                fileName: 'Price_list.csv',
-                                separator: "    ",
-                                noAutoBOM: false,
-                                blobType: 'text/csv; charset = utf-8'
-                            } }
+                            data={this.state.products}
+                            columns={this.state.columns}
                         >
                             {
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
+                                            <MyExportCSV  {...props.csvProps}>Export</MyExportCSV>
                                         </div>
-                                        <hr />
-                                        <h5>Row Count:<span className="badge">{ this.state.rowCount }</span></h5>
+                                        <hr/>
+                                        <h5>Row Count:<span className="badge">{this.state.rowCount}</span></h5>
                                         <BootstrapTable
-                                            onDataSizeChange={ this.handleDataChange }
+                                            onDataSizeChange={this.handleDataChange}
                                             keyField={'_id'}
-                                            data={ this.state.products }
-                                            columns={ this.state.columns }
-                                            filter={ filterFactory() }
-                                            pagination={ paginationFactory() }
+                                            data={this.state.products}
+                                            columns={this.state.columns}
+                                            filter={filterFactory()}
+                                            pagination={paginationFactory()}
                                             hover
                                             tabIndexCell
-                                            bordered={ false }
+                                            bordered={false}
                                             noDataIndication="Таблица не заполнена, просьба обратиться в контакный центр"
 
-                                            { ...props.baseProps }
+                                            {...props.baseProps}
                                         />
                                     </div>
                                 )
@@ -202,51 +196,55 @@ class Object extends Component{
 
                 </div>
             );
-        }else
+        } else {
             return (
-                <div className="container" style={{ marginTop: 50 }}>
+                <div className="container" style={{marginTop: 50}}>
                     <div>
                         <ToolkitProvider
                             keyField={'_id'}
-                            data={ this.state.products }
-                            columns={ this.state.columns }
-                            exportCSV={ {
+                            data={this.state.products}
+                            columns={this.state.columns}
+                            exportCSV={{
                                 fileName: 'Price_list.csv',
                                 separator: "    ",
                                 noAutoBOM: false,
                                 blobType: 'text/csv; charset = utf-8'
-                            } }
+                            }}
                         >
                             {
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Personal'><button className="btn btn-primary btn-group">Добавить</button></Link>
-                                            <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
-                                            <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
+                                            <Link to='/Add_client'>
+                                                <button className="btn btn-primary btn-group">Добавить</button>
+                                            </Link>
+                                            <MyExportCSV  {...props.csvProps}>Export</MyExportCSV>
+                                            <button className="btn btn-secondary btn-group"
+                                                    onClick={this.handleGetSelectedData}>Удалить отмеченные
+                                            </button>
                                         </div>
-                                        <hr />
-                                        <h5>Row Count:<span className="badge">{ this.state.rowCount }</span></h5>
+                                        <hr/>
+                                        <h5>Row Count:<span className="badge">{this.state.rowCount}</span></h5>
                                         <BootstrapTable
-                                            onDataSizeChange={ this.handleDataChange }
+                                            onDataSizeChange={this.handleDataChange}
                                             keyField={'_id'}
-                                            data={ this.state.products }
-                                            columns={ this.state.columns }
-                                            filter={ filterFactory() }
+                                            data={this.state.products}
+                                            columns={this.state.columns}
+                                            filter={filterFactory()}
                                             cellEdit={
                                                 cellEditFactory({
                                                     mode: 'dbclick',
                                                     blurToSave: true,
                                                 })
                                             }
-                                            pagination={ paginationFactory() }
-                                            selectRow={ selectRow }
+                                            pagination={paginationFactory()}
+                                            selectRow={selectRow}
                                             hover
                                             tabIndexCell
-                                            bordered={ false }
-                                            noDataIndication="Услуг не существует"
+                                            bordered={false}
+                                            noDataIndication="Клиентов не существует"
 
-                                            { ...props.baseProps }
+                                            {...props.baseProps}
                                         />
                                     </div>
                                 )
@@ -257,7 +255,8 @@ class Object extends Component{
 
                 </div>
             );
+        }
     }
 }
 
-export default  Object
+export default  Object_table

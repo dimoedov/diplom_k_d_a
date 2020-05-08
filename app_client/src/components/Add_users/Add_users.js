@@ -11,21 +11,19 @@ const get_cookie = ( cookie_name ) =>
         return null;
 };
 
-class Personal extends Component{
+class Add_users extends Component{
     constructor(props) {
         super(props);
         this.state= {
-            kind_of_work: 'Диагностика',
-            service: '',
-            engineer: '',
-            customer: '',
-            price: '',
+            last_name: '',
+            name: '',
+            middle_name: '',
+            username: '',
+            password: '',
+            position: '',
             serverOtvet: ''
         }
     }
-    handleChange = (e) => {
-        this.setState({kind_of_work: e.target.value});
-    };
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -40,7 +38,7 @@ class Personal extends Component{
             formBody.push(encodedKey + "=" + encodedValue);
         }
         formBody = formBody.join("&");
-        fetch('/api/carfix', {
+        fetch('/api/signup', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -52,48 +50,58 @@ class Personal extends Component{
     };
     render() {
         if (get_cookie('Authorized') === null){
-            return <Redirect to="/" />;
+            return <Redirect to="/404" />;
         }else
         if (this.state.serverOtvet.success){
-            return (<Redirect to="/FormList"/>);
+            return (<Redirect to="/Users"/>);
         }else {
             return (
                 <div>
                     <div>
-                        <h1  className='text-center text-dark'>Добавление услуги</h1>
+                        <h1  className='text-center text-dark'>Добавление пользователя</h1>
                     </div>
                     <div>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className={`form-group input-group`}>
-                                <label htmlFor="kind_of_work">Вид работы</label><pre>            </pre>
-                                <select className="form-control" defaultValue={this.state.kind_of_work} onChange={this.handleChange}>
-                                    <option value="Диагностика">Диагностика</option>
-                                    <option value="Слесарный ремонт">Слесарный ремонт</option>
-                                    <option value="Кузовной ремонт">Кузовной ремонт</option>
-                                    <option value="Шиномонтаж">Шиномонтаж</option>
-                                    <option value="Автомойка">Автомойка</option>
-                                    <option value="Запчасти">Запчасти</option>
-                                </select>
-                            </div>
-                            <div className={`form-group input-group`}>
-                                <label htmlFor="service">Наименование услуги </label><pre>   </pre>
-                                <input type="text" required className="form-control" name="service"
-                                       placeholder="Услуга"
-                                       value={this.state.service}
+                            <div className={`form-group row input-group`}>
+                                <label htmlFor="last_name" className='col-sm-3'>Фамилия</label>
+                                <input type="text" required className="form-control col-sm-8" name="last_name"
+                                       placeholder="Фамилия"
+                                       value={this.state.last_name}
                                        onChange={this.handleUserInput}/>
                             </div>
-                            <div className={`form-group input-group`}>
-                                <label htmlFor="engineer">Работник</label><pre>              </pre>
-                                <input type="text" required className="form-control" name="engineer"
-                                       placeholder="ФИО работника"
-                                       value={this.state.engineer}
+                            <div className={`form-group row input-group`}>
+                                <label htmlFor="name" className='col-sm-3'>Имя </label>
+                                <input type="text" required className="form-control col-sm-8" name="name"
+                                       placeholder="Имя"
+                                       value={this.state.name}
                                        onChange={this.handleUserInput}/>
                             </div>
-                            <div className={`form-group input-group`}>
-                                <label htmlFor="price">Цена</label><pre>                  </pre>
-                                <input type="number" required className="form-control" name="price"
-                                       placeholder="Цена услуги"
-                                       value={this.state.price}
+                            <div className={`form-group row input-group`}>
+                                <label htmlFor="middle_name" className='col-sm-3'>Отчество</label>
+                                <input type="text" required className="form-control col-sm-8" name="middle_name"
+                                       placeholder="Отчество"
+                                       value={this.state.middle_name}
+                                       onChange={this.handleUserInput}/>
+                            </div>
+                            <div className={`form-group row input-group`}>
+                                <label htmlFor="username" className='col-sm-3'>Имя пользователя</label>
+                                <input type="text" required className="form-control col-sm-8" name="username"
+                                       placeholder="username"
+                                       value={this.state.username}
+                                       onChange={this.handleUserInput}/>
+                            </div>
+                            <div className={`form-group row input-group`}>
+                                <label htmlFor="password" className='col-sm-3'>Пароль</label>
+                                <input type="password" required className="form-control col-sm-8" name="password"
+                                       placeholder="Пароль"
+                                       value={this.state.password}
+                                       onChange={this.handleUserInput}/>
+                            </div>
+                            <div className={`form-group row input-group`}>
+                                <label htmlFor="position" className='col-sm-3'>Должность</label>
+                                <input type="text" required className="form-control col-sm-8" name="position"
+                                       placeholder="Должность"
+                                       value={this.state.position}
                                        onChange={this.handleUserInput}/>
                             </div>
                             <input type="submit" className="btn btn-primary btn-dark" onSubmit={this.handleSubmit}
@@ -107,4 +115,4 @@ class Personal extends Component{
     }
 
 }
-export default Personal;
+export default Add_users;

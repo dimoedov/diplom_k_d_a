@@ -7,7 +7,7 @@ import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
 const regExpPrice = /^\d+$/;
-const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
+const regExpName = /(^[А-ЯA-Z]{1}[а-яa-z]{1,14} [А-ЯA-Z]{1}[а-яa-z]{1,14}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,14} [а-яa-z]{1,14}$)/;
 
 const get_cookie = ( cookie_name ) =>
 {
@@ -31,7 +31,6 @@ const MyExportCSV = (props) => {
 
 let formBody = [];
 class Price extends Component{
-
     state = {
         serverOtvet: '',
         products: [],
@@ -52,7 +51,7 @@ class Price extends Component{
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
-                            message: 'Услуга вводится без цифр'
+                            message: 'Допускаются только буквы, если слов несколько тогда через пробел'
                         };
                     }
                     formBody = [];
@@ -78,7 +77,7 @@ class Price extends Component{
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
                         .then(db =>  window.location.assign('http://localhost:3000/Price/'))
-                        .catch(err => console.log("err: =" + err));
+                        .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
             },
@@ -87,6 +86,9 @@ class Price extends Component{
                 text: 'цена',
                 sort: true,
                 selected: false,
+                editor:{
+                    Type: Type.Number
+                },
                 validator: (newValue, row, column) => {
                     if (!regExpPrice.test(newValue)) {
                         return {
@@ -123,7 +125,7 @@ class Price extends Component{
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
                         .then(db =>  window.location.assign('http://localhost:3000/Price'))
-                        .catch(err => console.log("err: =" + err));
+                        .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
             },
@@ -133,21 +135,55 @@ class Price extends Component{
                 sort: true,
                 selected: false,
                 formatter: (cellContent, row) => {
-                    if (row.inStock) {
+                    if (row.dostyp) {
                         return (
                             <h5>
-                                <span className="label label-success"> Available</span>
+                                <span className="label label-success"> Доступно</span>
                             </h5>
                         );
                     }
                     return (
                         <h5>
-                            <span className="label label-danger"> Backordered</span>
+                            <span className="label label-danger"> Нет возможности</span>
                         </h5>
                     );
                 },
                 editor:{
-                    type: Type.CHECKBOX
+                    type: Type.SELECT,
+                    options: [{
+                            value: 'true',
+                            label: 'true'
+                        }, {
+                            value: 'false',
+                            label: 'false'
+                        }]
+                },
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === column.dataField){
+                            let encodedKey = encodeURIComponent(prop);
+                            let encodedValue = encodeURIComponent(newValue);
+                            formBody.push(encodedKey + "=" + encodedValue);
+                        }else {
+                            let encodedKey = encodeURIComponent(prop);
+                            let encodedValue = encodeURIComponent(row[prop]);
+                            formBody.push(encodedKey + "=" + encodedValue);
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/service/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/Price'))
+                        .catch(err => this.setState({serverOtvet: err}));
+                    return true;
                 }
             }],
         selected: []
@@ -155,7 +191,7 @@ class Price extends Component{
     componentDidMount() {
         fetch('/api/service').then(res => res.json())
             .then(data => this.setState({products: data}))
-            .catch(err => console.log("err: =" + err));
+            .catch(err => this.setState({serverOtvet: err}));
     };
     handleGetSelectedData = () => {
         if (window.confirm('Вы действительно хотите удалить?')){
@@ -174,7 +210,7 @@ class Price extends Component{
                 body:formBody
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
-                .catch(err => console.log("err: =" + err))
+                .catch(err => this.setState({serverOtvet: err}))
                 .then(del =>  window.location.assign('http://localhost:3000/Price'));
 
         }
@@ -297,7 +333,7 @@ class Price extends Component{
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Personal'><button className="btn btn-primary btn-group">Добавить</button></Link>
+                                            <Link to='/Add_price'><button className="btn btn-primary btn-group">Добавить</button></Link>
                                             <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                             <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                         </div>

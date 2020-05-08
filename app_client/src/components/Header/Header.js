@@ -28,13 +28,13 @@ class Header extends Component {
                                 <div className="col-lg-7">
                                     <nav className="topnav">
                                         <Switch>
-                                            <Route exact path='/Personal'>
+                                            <Route exact path='/Add_price'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                        <Link className="nav-link text-white" to='/Services'>Услуги</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
@@ -47,20 +47,20 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                        <Link className="nav-link text-white" to='/Services'>Услуги</Link>
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white active" to='/Users'>Работники</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
-                                            <Route exact path='/FormList'>
+                                            <Route exact path='/Services'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link active text-white" to='/FormList'>Услуги</Link>
+                                                        <Link className="nav-link active text-white" to='/Services'>Услуги</Link>
                                                     </li>
                                                      <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
@@ -73,7 +73,7 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                        <Link className="nav-link text-white" to='/Services'>Услуги</Link>
                                                     </li>
                                                      <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
@@ -86,7 +86,7 @@ class Header extends Component {
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                        <Link className="nav-link text-white" to='/Services'>Услуги</Link>
                                                     </li>
                                                      <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
@@ -99,7 +99,7 @@ class Header extends Component {
                                                         <Link className="nav-link text-white active"  to='/Price'> Прайс лист</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/FormList'>Услуги</Link>
+                                                        <Link className="nav-link text-white" to='/Services'>Услуги</Link>
                                                     </li>
                                                      <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
@@ -112,7 +112,7 @@ class Header extends Component {
                                 <div className="butn_nav_bar col-lg-3">
                                     <button type="button" className="butn_nav_bar flex-column btn btn-primary btn-dark text-white btn-lg btn-block">{localStorage.getItem('fio')}</button>
                                     <ul className="submenu">
-                                        <Link  to='/Signout'><button type="button " className="flex-column btn btn-primary btn-secondary text-white btn-lg btn-block">Мои услуги</button></Link>
+                                        <Link  to='/Services'><button type="button " className="flex-column btn btn-primary btn-secondary text-white btn-lg btn-block">Мои услуги</button></Link>
                                         <Link  to='/Signout'><button type="button " className="flex-column btn btn-primary btn-secondary text-white btn-lg btn-block">Выйти</button></Link>
                                     </ul>
                                 </div>

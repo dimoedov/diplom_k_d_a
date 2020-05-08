@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory from "react-bootstrap-table2-filter";
-import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
+import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
 const regExpPrice = /^\d+$/;
@@ -207,7 +207,7 @@ class Client extends Component{
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Add_clent'><button className="btn btn-primary btn-group">Добавить</button></Link>
+                                            <Link to='/Add_client'><button className="btn btn-primary btn-group">Добавить</button></Link>
                                             <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                             <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                         </div>

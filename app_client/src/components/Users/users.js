@@ -3,10 +3,9 @@ import {Link} from "react-router-dom";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory from "react-bootstrap-table2-filter";
-import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
+import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-const regExpPrice = /^\d+$/;
 const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
 
 const get_cookie = ( cookie_name ) =>
@@ -28,7 +27,7 @@ const MyExportCSV = (props) => {
         </div>
     );
 };
-
+let hide = false;
 let formBody = [];
 class Users extends Component{
 
@@ -48,6 +47,7 @@ class Users extends Component{
                 dataField: 'username',
                 text: 'username',
                 sort: true,
+                hidden: hide,
                 selected: false,
                 editable: false
             },
@@ -126,7 +126,7 @@ class Users extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/Users/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
                 },
@@ -166,7 +166,7 @@ class Users extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/Users/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
                 },
@@ -206,7 +206,7 @@ class Users extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/Users/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
                 },
@@ -269,6 +269,7 @@ class Users extends Component{
         }
     };
     render() {
+        hide = (localStorage.getItem('position') !== 'Администратор');
         const selectRow = {
             mode: 'checkbox',
             clickToSelect: false,
@@ -348,7 +349,7 @@ class Users extends Component{
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Personal'><button className="btn btn-primary btn-group">Добавить</button></Link>
+                                            <Link to='/Add_users'><button className="btn btn-primary btn-group">Добавить</button></Link>
                                             <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                             <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                         </div>

@@ -32,7 +32,7 @@ const get_cookie = ( cookie_name ) =>
         return null;
 };
 
-class FormList extends Component {
+class Services extends Component {
     state = {
         serverOtvet: '',
         products: [],
@@ -370,4 +370,4 @@ class FormList extends Component {
     }
 }
 //https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/index.html?selectedKind=Basic%20Table&selectedStory=Indication%20For%20Empty%20Table&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel
-export default FormList;
+export default Services;

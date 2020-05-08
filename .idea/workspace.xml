@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb1365a-3513-48fa-b81a-a1112417be30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_clent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_service/Add_service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_users/Add_users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Error/emoji.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_clent.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_service/Add_service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_price/Add_price.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_users/Add_users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_users/Add_users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Error/Error.css" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Error/Error.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Error/Error.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Error/Error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/FormList/FormList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Services/Services.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Users/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/models/carfix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/fix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/models/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,21 +57,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app_client/src/components/Add_users" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app_client/src/components/Error" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Error" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_users" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_service" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_object" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_client" />
-      <recent name="C:\Users\FiliusDM\Documents\GitHub\kursovaya\client\src\components\Error" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -74,11 +83,21 @@
     </option>
   </component>
   <component name="RunManager" selected="npm.Запуск клиента">
-    <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm" temporary="true">
+    <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
       <scripts>
         <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Запуск сервера в режиме отладки" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/app_server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="startNodemon" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -94,7 +113,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="Запуск клиента" type="js.build_tools.npm" temporary="true">
+    <configuration name="Запуск клиента" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_client/package.json" />
       <command value="run" />
       <scripts>
@@ -115,13 +134,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.Запуск сервера в режиме настройки" />
       <item itemvalue="npm.Запуск клиента" />
+      <item itemvalue="npm.Запуск сервера в режиме настройки" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.Запуск сервера в режиме настройки" />
-        <item itemvalue="npm.Запуск клиента" />
       </list>
     </recent_temporary>
   </component>
@@ -138,14 +156,10 @@
         <serviceView>
           <option name="contentProportion" value="0.14652406" />
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
+          <option name="groupByServiceGroups" value="false" />
           <option name="isSelected" value="true" />
           <option name="viewType" value="group" />
           <option name="roots">
@@ -199,6 +213,10 @@
       <workItem from="1588243373262" duration="2954000" />
       <workItem from="1588252310393" duration="6846000" />
       <workItem from="1588326308578" duration="6956000" />
+      <workItem from="1588589284908" duration="1237000" />
+      <workItem from="1588756394452" duration="6709000" />
+      <workItem from="1588851964810" duration="613000" />
+      <workItem from="1588943741791" duration="24212000" />
     </task>
     <servers />
   </component>
@@ -209,10 +227,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588243425082">
+    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588589374802">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243425082" />
+    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588589374802" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587991361043">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -225,33 +243,37 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="447" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243409890" />
-    <state width="1595" height="212" key="GridCell.Tab.0.bottom" timestamp="1588336730200">
+    <state width="1595" height="212" key="GridCell.Tab.0.bottom" timestamp="1588977353380">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
+    <state width="1595" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588977353380" />
     <state width="1579" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.bottom/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.center" timestamp="1588336730200">
+    <state width="1595" height="212" key="GridCell.Tab.0.center" timestamp="1588977353380">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
+    <state width="1595" height="212" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588977353380" />
     <state width="1579" height="255" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.center/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.left" timestamp="1588336730200">
+    <state width="1595" height="212" key="GridCell.Tab.0.left" timestamp="1588977353379">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
+    <state width="1595" height="212" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588977353379" />
     <state width="1579" height="255" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.left/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.right" timestamp="1588336730200">
+    <state width="1595" height="212" key="GridCell.Tab.0.right" timestamp="1588977353380">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588336730200" />
+    <state width="1595" height="212" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588977353380" />
     <state width="1579" height="255" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.right/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state x="616" y="250" key="run.anything.popup" timestamp="1583298197252">
+    <state x="616" y="250" key="run.anything.popup" timestamp="1588968974397">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1583298197252" />
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588968974397" />
+    <state x="616" y="193" width="672" height="676" key="search.everywhere.popup" timestamp="1588944683765">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="193" width="672" height="676" key="search.everywhere.popup/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588944683765" />
   </component>
 </project>

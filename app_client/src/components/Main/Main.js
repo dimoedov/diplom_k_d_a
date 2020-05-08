@@ -1,17 +1,20 @@
 import {Switch, Route} from 'react-router-dom'
 import React, {Suspense} from 'react';
 import Home from '../Home/Home'
-import Personal from '../Personal/Personal'
 import Auth from '../Auth/Auth'
 import Register from '../Register/Register'
 import Signout from "../Signout/Signout";
-import FormList from "../FormList/FormList";
+import Services from "../Services/Services";
 import Error from "../Error/Error";
 import Price from "../Price/Price";
 import Users from "../Users/users";
-import Add_clent from "../Add_client/Add_clent";
-import Object from "../Object/Object";
+import Add_client from "../Add_client/Add_client";
+import Object_table from "../Object/Object";
 import Client from "../Client/Client";
+import Add_users from "../Add_users/Add_users";
+import Add_object from "../Add_object/Add_object";
+import Add_price from "../Add_price/Add_price";
+import Add_fix from "../Add_fix/Add_fix";
 
 function Main() {
     return (
@@ -21,17 +24,17 @@ function Main() {
                         <Route exact path='/' component={Home}/>
                         <Route path='/Auth' component={Auth}/>
                         <Route path='/Register' component={Register}/>
-                        <Route path='/Personal' component={Personal}/>
                         <Route path='/Signout' component={Signout}/>
-                        <Route path='/FormList' component={FormList}/>
+                        <Route path='/Services' component={Services}/>
                         <Route path='/Price' component={Price}/>
                         <Route path='/Users' component={Users}/>
-                        <Route path='/Objects' component={Object}/>
+                        <Route path='/Objects' component={Object_table}/>
                         <Route path='/Clients' component={Client}/>
-                        <Route path='/Add_clent' component={Add_clent}/>
-                        {/*<Route path='/Add_clent' component={Add_ob}/>*/}
-                        {/*<Route path='/Add_clent' component={Add_clent}/>*/}
-                        {/*<Route path='/Add_clent' component={Add_clent}/>*/}
+                        <Route path='/Add_client' component={Add_client}/>
+                        <Route path='/Add_users' component={Add_users}/>
+                        <Route path='/Add_object' component={Add_object}/>
+                        <Route path='/Add_price' component={Add_price}/>
+                        <Route path='/Add_fix' component={Add_fix}/>
                         <Route path="*" component={Error} status={404}/>
                     </Switch>
                 </Suspense>

@@ -13,7 +13,7 @@ let ServiceSchema = new Schema({
     dostyp: {
         type: Boolean,
         required: false
-    }
+    },
 });
 
 module.exports = mongoose.model('Service', ServiceSchema);

@@ -1,8 +1,8 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let CarFixSchema = new Schema({
-  kind_of_work: {
+let FixSchema = new Schema({
+  master: {
     type: String,
     required: false
   },
@@ -10,18 +10,27 @@ let CarFixSchema = new Schema({
     type: String,
     required: false
   },
-  engineer: {
+  object: {
     type: String,
     required: false
   },
-  customer: {
+  client: {
     type: String,
     required: false
   },
-  price: {
-    type: Number,
+  dateStart: {
+    type: String,
     required: false
-  }
+  },
+  dateEnd: {
+    type: String,
+    required: false
+  },
+  status: {
+    type: String,
+    required: false
+  },
+
 });
 
-module.exports = mongoose.model('CarFix', CarFixSchema);
+module.exports = mongoose.model('Fix', FixSchema);

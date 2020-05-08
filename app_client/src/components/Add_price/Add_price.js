@@ -11,20 +11,16 @@ const get_cookie = ( cookie_name ) =>
         return null;
 };
 
-class Add_clent extends Component{
+class Add_price extends Component{
     constructor(props) {
         super(props);
         this.state= {
             name: '',
-            type: 'Физическое лицо',
-            contacts: '',
-
+            price: '',
+            dostyp: true,
             serverOtvet: ''
         }
     }
-    handleChange = (e) => {
-        this.setState({type: e.target.value});
-    };
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -39,7 +35,7 @@ class Add_clent extends Component{
             formBody.push(encodedKey + "=" + encodedValue);
         }
         formBody = formBody.join("&");
-        fetch('/api/clients', {
+        fetch('/api/service', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -54,11 +50,8 @@ class Add_clent extends Component{
             return <Redirect to="/" />;
         }else
         if (this.state.serverOtvet.success){
-            return (<Redirect to="/Clients"/>);
+            return (<Redirect to="/Price"/>);
         }else {
-            if ((localStorage.getItem('position') !== 'Администратор') && (localStorage.getItem('position') !== 'Директор')){
-                return (<Redirect to="/Clients"/>);
-            }else
             return (
                 <div>
                     <div>
@@ -67,27 +60,19 @@ class Add_clent extends Component{
                     <div>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className={`form-group input-group`}>
-                                <label htmlFor="type">Тип</label><pre>            </pre>
-                                <select className="form-control" defaultValue={this.state.kind_of_work} onChange={this.handleChange}>
-                                    <option value="Физическое лицо">Физическое лицо</option>
-                                    <option value="Компания">Компания</option>
-                                </select>
-                            </div>
-                            <div className={`form-group input-group`}>
-                                <label htmlFor="name">ФИО / Название компании </label><pre>   </pre>
-                                <input type="text" required className="form-control" name="name"
-                                       placeholder="ФИО / Название компании"
+                                <label htmlFor="name" className='col-sm-3'>Наименование услуги </label>
+                                <input type="text" required className="form-control col-sm-8" name="name"
+                                       placeholder="Услуга"
                                        value={this.state.name}
                                        onChange={this.handleUserInput}/>
                             </div>
                             <div className={`form-group input-group`}>
-                                <label htmlFor="contacts">Контактные данные</label><pre>              </pre>
-                                <input type="text" required className="form-control" name="contacts"
-                                       placeholder="Контакты"
-                                       value={this.state.contacts}
+                                <label htmlFor="price" className='col-sm-3'>Цена</label>
+                                <input type="number" required className="form-control col-sm-8" name="price"
+                                       placeholder="Цена услуги"
+                                       value={this.state.price}
                                        onChange={this.handleUserInput}/>
                             </div>
-
                             <input type="submit" className="btn btn-primary btn-dark" onSubmit={this.handleSubmit}
                                    value='Отправить'/>
                         </form>
@@ -99,4 +84,4 @@ class Add_clent extends Component{
     }
 
 }
-export default Add_clent;
+export default Add_price;

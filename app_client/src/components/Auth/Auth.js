@@ -39,7 +39,7 @@ class Auth extends Component{
         if (this.state.serverOtvet.success){
             localStorage.setItem('fio', this.state.serverOtvet.user);
             localStorage.setItem('position', this.state.serverOtvet.position);
-            return window.location.assign('http://localhost:3000/Personal/');
+            return window.location.assign('http://localhost:3000/Services/');
         }else {
             let hidden = true;
             if (this.state.serverOtvet !== ''){
