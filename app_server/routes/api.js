@@ -84,7 +84,7 @@ router.post('/service', function(req, res) {
 });
 
 router.get('/service', function(req, res) {
-  let token = req.cookies;
+  let token = req.cookies.Authorized;
   if (token !== null) {
     Service.find((err, Service) =>{
       if (err) return next(err);
@@ -139,7 +139,7 @@ router.patch('/service/upgrade', function (req, res) {
 });
 
 router.get('/users', function(req, res) {
-  let token = req.cookies;
+  let token = req.cookies.Authorized;
   if (token !== null) {
     User.find((err, User) => {
       if (err) return next(err);
@@ -223,7 +223,7 @@ router.post('/clients', function(req, res) {
 });
 
 router.get('/clients', function(req, res) {
-  let token = req.cookies;
+  let token = req.cookies.Authorized;
   if (token !== null) {
     client.find((err, client) =>{
       if (err) return next(err);
@@ -301,7 +301,7 @@ router.post('/objects', function(req, res) {
 });
 
 router.get('/objects', function(req, res) {
-  let token = req.cookies;
+  let token = req.cookies.Authorized;
   if (token !== null) {
     Object.find((err, objects) =>{
       if (err) return next(err);
@@ -354,6 +354,200 @@ router.patch('/objects/upgrade', function (req, res) {
     });
   }
 });
+
+
+router.post('/fix', function(req, res) {
+  let token = req.cookies.Authorized;
+  console.log(req.body);
+  if (token !== null) {
+    let newFix = new Fix({
+      master: req.cookies.id,
+      service: req.body.service,
+      object: req.body.object,
+      client: req.body.client,
+      dateStart: req.body.dateStart,
+      dateEnd: req.body.dateEnd,
+      status: req.body.status
+    });
+console.log(newFix);
+    newFix.save(function(err) {
+      if (err) {
+        return res.json({success: false, msg: 'Save Service failed.'});
+      }
+      res.json({success: true, msg: 'Successful created new Service.'});
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.get('/fix', function(req, res) {
+  let token = req.cookies.Authorized;
+  let mass = [];
+  if (token !== null) {
+    Fix.find({
+    master: req.cookies.id
+    },function (err, obj){
+      mass = obj;
+      for (let prop in mass){
+        Object.findById({
+          _id: mass[prop]['object']
+        },{
+          name: true,
+          _id: false
+        }, function (err, objects) {
+          mass[prop]['object'] = objects['name'];
+          User.findById({
+            _id: mass[prop]['master']
+          },{
+            last_name: true,
+            name: true,
+            middle_name: true,
+            _id: false
+          }, function (err, users) {
+            mass[prop]['master'] = users['last_name']+' '+users['name']+' '+users['middle_name'];
+            client.findById({
+              _id: mass[prop]['client']
+            },{
+              name: true,
+              _id: false
+            }, function (err, clients) {
+              mass[prop].client = clients.name;
+              Service.find({
+                _id: mass[prop]['service'].split(',')
+              },{
+                name: true,
+                _id: false
+              }, function (err, Service) {
+                let buffer = [];
+                for (let param in Service){
+                  buffer.push(Service[param]['name']);
+                }
+                mass[prop].service = buffer.join("\n");
+                res.json(mass)
+              })
+            })
+          })
+        })
+            .catch(err => res.json(err))
+      }
+    })
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+router.get('/fix/all', function(req, res) {
+  let token = req.cookies.Authorized;
+  let mass = [];
+  if (token !== null) {
+    Fix.find({
+
+    },function (err, obj){
+      mass = obj;
+      for (let prop in mass){
+        Object.findById({
+          _id: mass[prop]['object']
+        },{
+          name: true,
+          _id: false
+        }, function (err, objects) {
+          mass[prop]['object'] = objects['name'];
+          User.findById({
+            _id: mass[prop]['master']
+          },{
+            last_name: true,
+            name: true,
+            middle_name: true,
+            _id: false
+          }, function (err, users) {
+            mass[prop]['master'] = users['last_name']+' '+users['name']+' '+users['middle_name'];
+            client.findById({
+              _id: mass[prop]['client']
+            },{
+              name: true,
+              _id: false
+            }, function (err, clients) {
+              mass[prop].client = clients.name;
+              Service.find({
+                _id: mass[prop]['service'].split(',')
+              },{
+                name: true,
+                _id: false
+              }, function (err, Service) {
+                let buffer = [];
+                for (let param in Service){
+                  buffer.push(Service[param]['name']);
+                }
+                mass[prop].service = buffer.join("\n");
+                res.json(mass)
+              })
+            })
+          })
+        })
+            .catch(err => res.json(err))
+      }
+    })
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.delete('/fix/delete/:id', function (req, res) {
+  let mass = req.body.selected.split(',');
+  let token = req.cookies.Authorized;
+  if (token !== null) {
+    Fix.deleteMany({
+      _id: mass
+    }, function (err) {
+      if (err) {
+        return res.json({success: false, msg: 'Delete Fix failed.'});
+      } else {
+        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
+      }
+    })
+  }
+});
+
+router.patch('/fix/upgrade', function (req, res) {
+  let token = req.cookies.Authorized;
+  if (token !== null){
+    console.log(req.body);
+    Fix.findById(req.body._id, (err, Fix) => {
+      if(err){
+        return res.json({success: false, msg: 'Not found.'});
+      }
+      if(req.body.master){
+        Fix.master = req.body.master;
+      }
+      if(req.body.service){
+        Fix.service = req.body.service;
+      }
+      if(req.body.object){
+        Fix.object = req.body.object;
+      }
+      if(req.body.client){
+        Fix.client = req.body.client;
+      }
+      if(req.body.dateStart){
+        Fix.dateStart = req.body.dateStart;
+      }
+      if(req.body.dateEnd){
+        Fix.dateEnd = req.body.dateEnd;
+      }
+      if(req.body.status){
+        Fix.status = req.body.status;
+      }
+      Fix.save((err, data) => {
+        if(err){
+          return res.json({success: false, msg: 'Update Fix failed.'});
+        }
+        return res.json({success: true, msg: 'Successful Update ' + data});
+      });
+
+    });
+  }
+});
+
 //получение списков для селектов
 router.get('/objects/list', function(req, res) {
   let token = req.cookies;
@@ -375,7 +569,10 @@ router.get('/clients/list', function(req, res) {
   let token = req.cookies;
   let list = [];
   if (token !== null) {
-    client.find({},{name: true, _id: false}, function (err, client){
+    client.find({},{
+      name: true,
+      _id: false
+    }, function (err, client){
       if (err) return next(err);
       for(let prop in client){
         list.push({value: client[prop].name, label: client[prop].name})
@@ -391,7 +588,12 @@ router.get('/service/list', function(req, res) {
   let token = req.cookies;
   let list = [];
   if (token !== null) {
-    Service.find({},{name: true, _id: false}, function (err, Service){
+    Service.find({
+      dostyp: true
+    },{
+      name: true,
+      _id: false
+    }, function (err, Service){
       if (err) return next(err);
       for(let prop in Service){
         list.push({value: Service[prop].name, label: Service[prop].name})
@@ -402,6 +604,7 @@ router.get('/service/list', function(req, res) {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+
 // получение _id
 router.post('/objects/list', function(req, res) {
   let token = req.cookies;
@@ -426,6 +629,7 @@ router.post('/objects/list', function(req, res) {
 router.post('/clients/list', function(req, res) {
   let token = req.cookies;
   let list = [];
+  console.log(req.body.name);
   if (token !== null) {
     client.find({
       name: req.body.name
@@ -433,6 +637,7 @@ router.post('/clients/list', function(req, res) {
       _id: true
     }, function (err, client){
       if (err) return next(err);
+      console.log(list);
       for(let prop in client){
         list.push(client[prop]._id)
       }
@@ -463,27 +668,6 @@ router.post('/service/list', function(req, res) {
   }
 });
 
-router.post('/fix', function(req, res) {
-  let token = req.cookies.Authorized;
-  if (token !== null) {
-    let newFix = new Fix({
-      master: req.body.master,
-      service: req.body.service,
-      object: req.body.object,
-      client: req.body.client,
-      dateStart: req.body.dateStart,
-      dateEnd: req.body.dateEnd,
-      status: req.body.status
-    });
 
-    newFix.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Save Service failed.'});
-      }
-      res.json({success: true, msg: 'Successful created new Service.'});
-    });
-  } else {
-    return res.status(403).send({success: false, msg: 'Unauthorized.'});
-  }
-});
+
 module.exports = router;

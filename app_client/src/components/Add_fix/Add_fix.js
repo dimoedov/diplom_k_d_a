@@ -19,7 +19,6 @@ class Add_fix extends Component{
     constructor(props) {
         super(props);
         this.state= {
-            master: '',
             service: '',
             object: '',
             client: '',
@@ -45,7 +44,8 @@ class Add_fix extends Component{
         this.setState({ selectedOption_objects });
         let formBody=[];
         for (let prop in selectedOption_objects){
-            formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_objects[prop]['value']));
+            if (prop === 'value')
+                formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_objects[prop]));
         }
         formBody = formBody.join("&");
         fetch('/api/objects/list', {
@@ -62,7 +62,8 @@ class Add_fix extends Component{
         this.setState({ selectedOption_clients });
         let formBody=[];
         for (let prop in selectedOption_clients){
-            formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_clients[prop]['value']));
+            if (prop === 'value')
+            formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_clients[prop]));
         }
         formBody = formBody.join("&");
         fetch('/api/clients/list', {
@@ -95,7 +96,6 @@ class Add_fix extends Component{
     handleSubmit = (e) =>{
         e.preventDefault();
         let formBody = [];
-        formBody.push(encodeURIComponent('master') + "=" + encodeURIComponent(get_cookie('id')));
         for (let prop in this.state) {
             let encodedKey = encodeURIComponent(prop);
             let encodedValue = encodeURIComponent(this.state[prop]);
