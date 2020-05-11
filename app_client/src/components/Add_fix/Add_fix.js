@@ -135,7 +135,7 @@ class Add_fix extends Component{
             return <Redirect to="/" />;
         }else
         if (this.state.serverOtvet.success){
-            return (<Redirect to="/Price"/>);
+            return (<Redirect to="/All_fix"/>);
         }else {
             return (
                 <div>

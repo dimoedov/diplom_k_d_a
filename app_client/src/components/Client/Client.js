@@ -7,7 +7,8 @@ import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
 const regExpPrice = /^\d+$/;
-const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
+const regExpName = /(^[А-ЯA-Z]{1} [а-яa-z]{1,}$)|(^[А-ЯA-Z]{1} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [а-яa-z]{1,}$)/;
+
 
 const get_cookie = ( cookie_name ) =>
 {

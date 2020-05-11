@@ -285,7 +285,7 @@ router.post('/objects', function(req, res) {
       date_start: req.body.date_start,
       company: req.body.company,
       project: req.body.project,
-      call: req.body.call,
+      calls_obj: req.body.calls_obj,
       etc: req.body.etc
     });
 
@@ -335,16 +335,26 @@ router.patch('/objects/upgrade', function (req, res) {
       if(err){
         return res.json({success: false, msg: 'Not found.'});
       }
+      if(req.body.date_start){
+        Object.date_start = req.body.date_start;
+      }
       if(req.body.name){
         Object.name = req.body.name;
       }
-      if(req.body.type){
-        Object.type = req.body.type;
+      if(req.body.company){
+        Object.company = req.body.company;
       }
-      if(req.body.contacts){
-        Object.contacts = req.body.contacts;
+      if(req.body.project){
+        Object.project = req.body.project;
+      }
+      if(req.body.calls_obj){
+        Object.calls_obj = req.body.calls_obj;
+      }
+      if(req.body.etc){
+        Object.etc = req.body.etc;
       }
       Object.save((err, data) => {
+        console.log(err);
         if(err){
           return res.json({success: false, msg: 'Update Object failed.'});
         }
@@ -369,7 +379,6 @@ router.post('/fix', function(req, res) {
       dateEnd: req.body.dateEnd,
       status: req.body.status
     });
-console.log(newFix);
     newFix.save(function(err) {
       if (err) {
         return res.json({success: false, msg: 'Save Service failed.'});
@@ -444,6 +453,7 @@ router.get('/fix/all', function(req, res) {
 
     },function (err, obj){
       mass = obj;
+      console.log(obj);
       for (let prop in mass){
         Object.findById({
           _id: mass[prop]['object']

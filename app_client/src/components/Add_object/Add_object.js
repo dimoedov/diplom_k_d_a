@@ -20,7 +20,7 @@ class Add_object extends Component{
             engineer: '',
             company: '',
             project: '',
-            call: '',
+            calls_obj: '',
             etc: '',
             serverOtvet: ''
         }
@@ -91,10 +91,10 @@ class Add_object extends Component{
                                        onChange={this.handleUserInput}/>
                             </div>
                             <div className={`form-group row input-group`}>
-                                <label htmlFor="call" className='col-sm-3'>Позывной</label>
-                                <input type="text" required className="form-control col-sm-8" name="call"
+                                <label htmlFor="calls_obj" className='col-sm-3'>Позывной</label>
+                                <input type="text" required className="form-control col-sm-8" name="calls_obj"
                                        placeholder="Позывной"
-                                       value={this.state.call}
+                                       value={this.state.calls_obj}
                                        onChange={this.handleUserInput}/>
                             </div>
                             <div className={`form-group row input-group`}>

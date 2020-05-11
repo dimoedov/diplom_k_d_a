@@ -7,8 +7,8 @@ let ObjectSchema = new Schema({
         required: true
     },
     date_start: {
-        type: Date,
-        required: true
+        type: String,
+        required: false
     },
     company: {
         type: String,
@@ -16,9 +16,9 @@ let ObjectSchema = new Schema({
     },
     project: {
         type: String,
-        required: true
+        required: false
     },
-    calle: {
+    calls_obj: {
         type: String,
         required: true
     },

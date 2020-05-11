@@ -4,7 +4,6 @@ import Home from '../Home/Home'
 import Auth from '../Auth/Auth'
 import Register from '../Register/Register'
 import Signout from "../Signout/Signout";
-import Services from "../Services/Services";
 import Error from "../Error/Error";
 import Price from "../Price/Price";
 import Users from "../Users/users";
@@ -27,7 +26,6 @@ function Main() {
                         <Route path='/Auth' component={Auth}/>
                         <Route path='/Register' component={Register}/>
                         <Route path='/Signout' component={Signout}/>
-                        <Route path='/Services' component={Services}/>
                         <Route path='/Price' component={Price}/>
                         <Route path='/Users' component={Users}/>
                         <Route path='/Objects' component={Object_table}/>

@@ -3,14 +3,13 @@ import {Link} from "react-router-dom";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory from "react-bootstrap-table2-filter";
-import cellEditFactory from "react-bootstrap-table2-editor";
+import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-// const regExpPrice = /^\d+$/;
-// const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
+const regExpStatus =/(^[А-ЯA-Z]{1} [а-яa-z]{1,}$)|(^[А-ЯA-Z]{1} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [а-яa-z]{1,}$)/;
+const regExpName = /(^[А-ЯA-Z]{3} [а-яa-zА-ЯA-Z]{1,}$)|(^[А-ЯA-Z]{3} '[а-яa-zА-ЯA-Z]{1,}'$)|(^[А-ЯA-Z]{3} "[а-яa-zА-ЯA-Z]{1,}"$)|(^[А-ЯA-Z]{3} `[а-яa-zА-ЯA-Z]{1,}`$)/;
 
-const get_cookie = ( cookie_name ) =>
-{
+const get_cookie = ( cookie_name ) => {
     let results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
 
     if ( results )
@@ -48,30 +47,242 @@ class Object_table extends Component{
                 text: 'Дата производства',
                 sort: true,
                 selected: false,
+                editor: {
+                    type: Type.DATE,
+                },
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'date_start'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/objects/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/objects/'))
+                        .catch(err => console.log("err: =" + err));
+
+                },
             },
             {
                 dataField: 'company',
                 text: 'Владеющая компания',
                 sort: true,
                 selected: false,
+                validator: (newValue, row, column) => {
+                    if (!regExpName.test(newValue)) {
+                        return {
+                            valid: false,
+                            message: 'Не правильно введена компания'
+                        };
+                    }
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'company'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/objects/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/objects/'))
+                        .catch(err => console.log("err: =" + err));
+                    return true;
+                },
             },
             {
                 dataField: 'project',
                 text: 'проект',
                 sort: true,
                 selected: false,
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'project'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/objects/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/objects/'))
+                        .catch(err => console.log("err: =" + err));
+                    return true;
+                },
             },
             {
-                dataField: 'call',
+                dataField: 'calls_obj',
                 text: 'позывной',
                 sort: true,
                 selected: false,
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'calls_obj'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/objects/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/objects/'))
+                        .catch(err => console.log("err: =" + err));
+                    return true;
+                },
             },
             {
                 dataField: 'etc',
                 text: 'Примечание',
                 sort: true,
                 selected: false,
+                editor:{
+                    type: Type.TEXTAREA
+                },
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'etc'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/objects/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/objects/'))
+                        .catch(err => console.log("err: =" + err));
+                    return true;
+                },
             }
             ],
         selected: []
@@ -99,7 +310,7 @@ class Object_table extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err))
-                .then(del =>  window.location.assign('http://localhost:3000/Object'));
+                .then(del =>  window.location.assign('http://localhost:3000/objects'));
 
         }
 
@@ -205,7 +416,7 @@ class Object_table extends Component{
                             data={this.state.products}
                             columns={this.state.columns}
                             exportCSV={{
-                                fileName: 'Price_list.csv',
+                                fileName: 'Objects.csv',
                                 separator: "    ",
                                 noAutoBOM: false,
                                 blobType: 'text/csv; charset = utf-8'
@@ -215,7 +426,7 @@ class Object_table extends Component{
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Add_client'>
+                                            <Link to='/Add_object'>
                                                 <button className="btn btn-primary btn-group">Добавить</button>
                                             </Link>
                                             <MyExportCSV  {...props.csvProps}>Export</MyExportCSV>
@@ -242,7 +453,7 @@ class Object_table extends Component{
                                             hover
                                             tabIndexCell
                                             bordered={false}
-                                            noDataIndication="Клиентов не существует"
+                                            noDataIndication="Объектов не существует"
 
                                             {...props.baseProps}
                                         />

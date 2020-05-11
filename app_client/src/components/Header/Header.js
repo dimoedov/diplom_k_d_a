@@ -28,7 +28,7 @@ class Header extends Component {
                                 <div className="col-lg-7">
                                     <nav className="topnav">
                                         <Switch>
-                                            <Route exact path='/Add_price'>
+                                            <Route exact path='/'>
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
@@ -38,6 +38,50 @@ class Header extends Component {
                                                     </li>
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Signout'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/price'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white active"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
                                                     </li>
                                                 </ul>
                                             </Route>
@@ -52,6 +96,164 @@ class Header extends Component {
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white active" to='/Users'>Работники</Link>
                                                     </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Objects'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white active" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Clients'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white active" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Add_client'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Add_users'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Add_object'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Add_price'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/Add_fix'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
+                                                </ul>
+                                            </Route>
+                                            <Route exact path='/My_fix'>
+                                                <ul className="nav nav-pills">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
                                                 </ul>
                                             </Route>
                                             <Route exact path='/All_fix'>
@@ -65,9 +267,15 @@ class Header extends Component {
                                                      <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
                                                     </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
+                                                    </li>
                                                 </ul>
                                             </Route>
-                                            <Route exact path='/register'>
+                                            <Route exact path="*">
                                                 <ul className="nav nav-pills">
                                                     <li className="nav-item">
                                                         <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
@@ -78,44 +286,11 @@ class Header extends Component {
                                                      <li className="nav-item">
                                                         <Link className="nav-link text-white" to='/Users'>Работники</Link>
                                                     </li>
-                                                </ul>
-                                            </Route>
-                                            <Route exact path='/auth'>
-                                                <ul className="nav nav-pills">
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white"  to='/Price'> Прайс лист</Link>
+                                                        <Link className="nav-link text-white" to='/Clients'>Клиенты</Link>
                                                     </li>
                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
-                                                    </li>
-                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
-                                                    </li>
-                                                </ul>
-                                            </Route>
-                                            <Route exact path='/price'>
-                                                <ul className="nav nav-pills">
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white active"  to='/Price'> Прайс лист</Link>
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
-                                                    </li>
-                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
-                                                    </li>
-                                                </ul>
-                                            </Route>
-                                            <Route exact path='/My_fix'>
-                                                <ul className="nav nav-pills">
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white active"  to='/Price'> Прайс лист</Link>
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/All_fix'>Услуги</Link>
-                                                    </li>
-                                                     <li className="nav-item">
-                                                        <Link className="nav-link text-white" to='/Users'>Работники</Link>
+                                                        <Link className="nav-link text-white" to='/Objects'>Объекты</Link>
                                                     </li>
                                                 </ul>
                                             </Route>

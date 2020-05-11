@@ -6,7 +6,7 @@ import filterFactory from "react-bootstrap-table2-filter";
 import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-const regExpName = /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}\040[\x27а-яa-z]))\040?$/;
+const regExpName = /(^[А-ЯA-Z]{1}[а-яa-z]{1,}$)/;
 
 const get_cookie = ( cookie_name ) =>
 {
@@ -60,7 +60,7 @@ class Users extends Component{
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
+                            message: 'Должность вводится с большой буквы'
                         };
                     }
                     formBody = [];
@@ -86,21 +86,21 @@ class Users extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        // .then(db =>  window.location.assign('http://localhost:3000/Users/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/Users/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
                 },
             },
             {
                 dataField: 'name',
-                text: 'Фамилия',
+                text: 'Имя',
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
+                            message: 'Должность вводится с большой буквы'
                         };
                     }
                     formBody = [];
@@ -133,14 +133,14 @@ class Users extends Component{
             },
             {
                 dataField: 'middle_name',
-                text: 'отчество',
+                text: 'Отчество',
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
-                            message: 'Должность вводится с большой буквы и через пробел без цифр'
+                            message: 'Должность вводится с большой буквы'
                         };
                     }
                     formBody = [];

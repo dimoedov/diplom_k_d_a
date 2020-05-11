@@ -40,6 +40,7 @@ class Price extends Component{
                 isKey: true,
                 text: 'Номер услуги',
                 sort: true,
+                hidden: true,
                 selected: false,
             },
             {
