@@ -8,6 +8,8 @@ let Service = require("../models/service");
 let Object = require("../models/object");
 let client = require("../models/client");
 let Fix = require("../models/fix");
+const pdf = require('html-pdf');
+
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -39,7 +41,6 @@ router.post('/signin', function(req, res) {
       res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
       user.comparePassword(req.body.password, function (err, isMatch) {
-        console.log(isMatch);
         if (isMatch && !err) {
 
           let token = jwt.sign(user.toJSON(), config.secret, {
@@ -354,7 +355,6 @@ router.patch('/objects/upgrade', function (req, res) {
         Object.etc = req.body.etc;
       }
       Object.save((err, data) => {
-        console.log(err);
         if(err){
           return res.json({success: false, msg: 'Update Object failed.'});
         }
@@ -368,7 +368,6 @@ router.patch('/objects/upgrade', function (req, res) {
 
 router.post('/fix', function(req, res) {
   let token = req.cookies.Authorized;
-  console.log(req.body);
   if (token !== null) {
     let newFix = new Fix({
       master: req.cookies.id,
@@ -377,7 +376,9 @@ router.post('/fix', function(req, res) {
       client: req.body.client,
       dateStart: req.body.dateStart,
       dateEnd: req.body.dateEnd,
-      status: req.body.status
+      price: req.body.price,
+      status: req.body.status,
+      etc: req.body.etc
     });
     newFix.save(function(err) {
       if (err) {
@@ -453,7 +454,7 @@ router.get('/fix/all', function(req, res) {
 
     },function (err, obj){
       mass = obj;
-      console.log(obj);
+
       for (let prop in mass){
         Object.findById({
           _id: mass[prop]['object']
@@ -521,7 +522,6 @@ router.delete('/fix/delete/:id', function (req, res) {
 router.patch('/fix/upgrade', function (req, res) {
   let token = req.cookies.Authorized;
   if (token !== null){
-    console.log(req.body);
     Fix.findById(req.body._id, (err, Fix) => {
       if(err){
         return res.json({success: false, msg: 'Not found.'});
@@ -544,8 +544,14 @@ router.patch('/fix/upgrade', function (req, res) {
       if(req.body.dateEnd){
         Fix.dateEnd = req.body.dateEnd;
       }
+      if(req.body.price){
+        Fix.price = req.body.price;
+      }
       if(req.body.status){
         Fix.status = req.body.status;
+      }
+      if(req.body.etc){
+        Fix.etc = req.body.etc;
       }
       Fix.save((err, data) => {
         if(err){
@@ -639,7 +645,6 @@ router.post('/objects/list', function(req, res) {
 router.post('/clients/list', function(req, res) {
   let token = req.cookies;
   let list = [];
-  console.log(req.body.name);
   if (token !== null) {
     client.find({
       name: req.body.name
@@ -647,7 +652,6 @@ router.post('/clients/list', function(req, res) {
       _id: true
     }, function (err, client){
       if (err) return next(err);
-      console.log(list);
       for(let prop in client){
         list.push(client[prop]._id)
       }
@@ -677,7 +681,41 @@ router.post('/service/list', function(req, res) {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+// получение общей цены
+router.post('/fix/price', function(req, res) {
+  let token = req.cookies;
+  let list = 0;
+  if (token !== null) {
+    Service.find({
+      _id: req.body._id
+    },{
+      price: true,
+      _id: false
+    }, function (err, Service){
+      if (err) return next(err);
+      for(let prop in Service){
+        list +=(Service[prop].price)
+      }
+      res.json(list);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
 
+//создание чека
+router.post('/create-pdf', (req, res) => {
+  pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
+    if(err) {
+      res.send(Promise.reject());
+    }
 
+    res.send(Promise.resolve());
+  });
+});
+router.get('/fetch-pdf', (req, res) => {
+  res.sendFile(`${__dirname}/result.pdf`)
+});
+//формирование чека
 
 module.exports = router;

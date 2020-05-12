@@ -2,21 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb1365a-3513-48fa-b81a-a1112417be30" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app_server/documents/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/result.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Market/Market.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Services/Services.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Users/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/models/object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -80,16 +77,6 @@
     </option>
   </component>
   <component name="RunManager" selected="npm.Запуск клиента">
-    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm" temporary="true">
-      <package-json value="$PROJECT_DIR$/app_server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="startNodemon" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
@@ -110,16 +97,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="Запуск клиента" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/app_client/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="запуск сервера в режиме отладки" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
@@ -130,10 +107,35 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="Запуск клиента" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/app_client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/app_server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="startNodemon" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="npm.запуск сервера в режиме отладки" />
       <item itemvalue="npm.Запуск клиента" />
+      <item itemvalue="npm.Запуск сервера в режиме настройки" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.Запуск сервера в режиме настройки" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -212,6 +214,7 @@
       <workItem from="1588977618026" duration="190000" />
       <workItem from="1589195382010" duration="20725000" />
       <workItem from="1589226871134" duration="9031000" />
+      <workItem from="1589281249786" duration="9305000" />
     </task>
     <servers />
   </component>
@@ -238,28 +241,28 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="447" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243409890" />
-    <state width="1595" height="212" key="GridCell.Tab.0.bottom" timestamp="1589236122893">
+    <state width="1595" height="212" key="GridCell.Tab.0.bottom" timestamp="1589294482680">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589236122893" />
+    <state width="1595" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589294482680" />
     <state width="1579" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.bottom/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.center" timestamp="1589236122892">
+    <state width="1595" height="212" key="GridCell.Tab.0.center" timestamp="1589294482679">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589236122892" />
+    <state width="1595" height="212" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589294482679" />
     <state width="1579" height="255" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.center/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.left" timestamp="1589236122892">
+    <state width="1595" height="212" key="GridCell.Tab.0.left" timestamp="1589294482679">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589236122892" />
+    <state width="1595" height="212" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589294482679" />
     <state width="1579" height="255" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.left/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1595" height="212" key="GridCell.Tab.0.right" timestamp="1589236122893">
+    <state width="1595" height="212" key="GridCell.Tab.0.right" timestamp="1589294482679">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1595" height="212" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589236122893" />
+    <state width="1595" height="212" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589294482679" />
     <state width="1579" height="255" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.right/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
     <state x="461" y="183" key="SettingsEditor" timestamp="1589234694974">

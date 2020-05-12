@@ -6,7 +6,6 @@ import filterFactory from "react-bootstrap-table2-filter";
 import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-const regExpStatus =/(^[А-ЯA-Z]{1} [а-яa-z]{1,}$)|(^[А-ЯA-Z]{1} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [а-яa-z]{1,}$)/;
 const regExpName = /(^[А-ЯA-Z]{3} [а-яa-zА-ЯA-Z]{1,}$)|(^[А-ЯA-Z]{3} '[а-яa-zА-ЯA-Z]{1,}'$)|(^[А-ЯA-Z]{3} "[а-яa-zА-ЯA-Z]{1,}"$)|(^[А-ЯA-Z]{3} `[а-яa-zА-ЯA-Z]{1,}`$)/;
 
 const get_cookie = ( cookie_name ) => {

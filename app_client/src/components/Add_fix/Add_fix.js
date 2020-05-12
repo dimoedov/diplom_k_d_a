@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import Select from 'react-select';
+import axios from "axios";
 
 const get_cookie = ( cookie_name ) =>
 {
@@ -25,6 +26,8 @@ class Add_fix extends Component{
             dateStart: `${ye}-${mo}-${da}`,
             dateEnd: '',
             status: '',
+            etc: '',
+            price: '',
             objects_list: null,
             clients_list: null,
             services_list: null,
@@ -76,9 +79,22 @@ class Add_fix extends Component{
             .then(data => this.setState({client: data}))
             .catch(err => console.log("err: =" + err));
     };
+    handleDataChange = ({ dataSize }) => {
+        this.setState({ rowCount: dataSize });
+    };
+    createAndDownloadPdf = () => {
+        axios.post('/create-pdf', this.state)
+            .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
+            .then((res) => {
+                const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+
+                saveAs(pdfBlob, 'newPdf.pdf');
+            })
+    };
     handleChange_services = selectedOption_services => {
         this.setState({ selectedOption_services });
         let formBody=[];
+        let formPrice=[];
         for (let prop in selectedOption_services){
             formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_services[prop]['value']));
         }
@@ -91,7 +107,23 @@ class Add_fix extends Component{
                 body: formBody
             }).then(res => res.json())
                 .then(data => this.setState({service: data}))
+                .then(db => {
+                    for (let prop in this.state.service){
+                        formPrice.push(encodeURIComponent('_id') + "=" + encodeURIComponent(this.state.service[prop]));
+                    }
+                    formPrice = formPrice.join("&");
+                        fetch('/api/fix/price', {
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: formPrice
+                        }).then(res => res.json())
+                            .then(data => this.setState({price: data}))
+                }
+                )
                 .catch(err => console.log("err: =" + err));
+
     };
     handleSubmit = (e) =>{
         e.preventDefault();
@@ -192,6 +224,21 @@ class Add_fix extends Component{
                                 <input type="text" required className="form-control col-sm-8" name="status"
                                        placeholder="Статус"
                                        value={this.state.status}
+                                       onChange={this.handleUserInput}/>
+                            </div>
+                            <div className={`form-group input-group`}>
+                                <label htmlFor="price" className='col-sm-3'>Цена</label>
+                                <input type="number" required className="form-control col-sm-8" name="price"
+                                       placeholder="price"
+                                       value={this.state.price}
+                                       disabled
+                                       />
+                            </div>
+                            <div className={`form-group input-group`}>
+                                <label htmlFor="etc" className='col-sm-3'>Примечание</label>
+                                <input type="text" className="form-control col-sm-8" name="etc"
+                                       placeholder="Примечание"
+                                       value={this.state.etc}
                                        onChange={this.handleUserInput}/>
                             </div>
                             <input type="submit" className="btn btn-primary btn-dark" onSubmit={this.handleSubmit}

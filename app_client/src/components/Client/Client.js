@@ -3,12 +3,11 @@ import {Link} from "react-router-dom";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory from "react-bootstrap-table2-filter";
-import cellEditFactory from "react-bootstrap-table2-editor";
+import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-const regExpPrice = /^\d+$/;
-const regExpName = /(^[А-ЯA-Z]{1} [а-яa-z]{1,}$)|(^[А-ЯA-Z]{1} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [а-яa-z]{1,}$)/;
-
+// const regExpName = /^\w+$/;
+const regExpContact = /(^[\w-\.]+@[\w-]+\.[a-z]{2,4}$)|(^\d[\d\(\)\ -]{4,14}\d$)/i;
 
 const get_cookie = ( cookie_name ) =>
 {
@@ -48,18 +47,156 @@ class Client extends Component{
                 text: 'Название / ФИО',
                 sort: true,
                 selected: false,
+                editor: {
+                    type: Type.TEXTAREA,
+                },
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'name'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/clients/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/Clients'))
+                        .catch(err => this.setState({serverOtvet: err}));
+                    return true;
+                }
             },
             {
                 dataField: 'type',
                 text: 'Тип',
                 sort: true,
                 selected: false,
+                editor:{
+                    type: Type.SELECT,
+                    options: [{
+                        value: 'Физическое лицо',
+                        label: 'Физическое лицо'
+                    }, {
+                        value: 'Компания',
+                        label: 'Компания'
+                    }]
+                },
+                validator: (newValue, row, column) => {
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'type'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/clients/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/Clients'))
+                        .catch(err => this.setState({serverOtvet: err}));
+                    return true;
+                }
             },
             {
                 dataField: 'contacts',
                 text: 'Контакные данные',
                 sort: true,
                 selected: false,
+                validator: (newValue, row, column) => {
+                    if (!regExpContact.test(newValue)) {
+                        return {
+                            valid: false,
+                            message: 'Поле принимает только номер телефона или почту'
+                        };
+                    }
+                    formBody = [];
+                    for (let prop in row) {
+                        if (prop === 'contacts'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+                        if (prop === '_id'){
+                            if (prop === column.dataField){
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(newValue);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }else {
+                                let encodedKey = encodeURIComponent(prop);
+                                let encodedValue = encodeURIComponent(row[prop]);
+                                formBody.push(encodedKey + "=" + encodedValue);
+                            }
+                        }
+
+                    }
+                    formBody = formBody.join("&");
+                    fetch('/api/clients/upgrade', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body:formBody
+                    }).then(res => res.json())
+                        .then(data => this.setState({serverOtvet: data}))
+                        .then(db =>  window.location.assign('http://localhost:3000/Clients'))
+                        .catch(err => this.setState({serverOtvet: err}));
+                    return true;
+                }
             }],
         selected: []
     };
@@ -86,7 +223,7 @@ class Client extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err))
-                .then(del =>  window.location.assign('http://localhost:3000/Client'));
+                .then(del =>  window.location.assign('http://localhost:3000/Clients'));
 
         }
 

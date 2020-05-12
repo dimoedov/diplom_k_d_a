@@ -26,7 +26,15 @@ let FixSchema = new Schema({
     type: String,
     required: false
   },
+  price: {
+    type: Number,
+    required: false
+  },
   status: {
+    type: String,
+    required: false
+  },
+  etc: {
     type: String,
     required: false
   },

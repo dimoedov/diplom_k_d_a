@@ -8,6 +8,8 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let config = require('./config/database');
 let favicon = require('serve-favicon');
+const pdf = require('html-pdf');
+const pdfTemplate = require('./documents');
 
 mongoose.connect(config.database, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -31,7 +33,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
-// app.get('/', express.static(__dirname+'client/public'));
+app.post('/create-pdf', (req, res) => {
+  pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
+    if(err) {
+      res.send(Promise.reject());
+    }
+
+    res.send(Promise.resolve());
+  });
+});
+
+app.get('/fetch-pdf', (req, res) => {
+  res.sendFile(`${__dirname}/result.pdf`)
+});
 
 app.use('/api', api);
 

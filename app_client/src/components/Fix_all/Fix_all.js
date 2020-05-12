@@ -6,6 +6,8 @@ import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import {Type} from "react-bootstrap-table2-editor"
 import Select from "react-select";
+import axios from 'axios';
+import { saveAs } from 'file-saver';
 import './Fix_all.css'
 
 const regExpStatus =/(^[А-ЯA-Z]{1} [а-яa-z]{1,}$)|(^[А-ЯA-Z]{1} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [а-яa-z]{1,}$)/;
@@ -25,6 +27,7 @@ class MySelect_services extends React.Component {
         this.state= {
             _id: '',
             service: '',
+            price: '',
             status: '',
             services_list: null,
             selectedOption_services: [],
@@ -53,8 +56,8 @@ class MySelect_services extends React.Component {
 
     handleChange_services = selectedOption_services => {
         this.setState({ selectedOption_services });
-        console.log(selectedOption_services);
         let formBody=[];
+        let formPrice=[];
         for (let prop in selectedOption_services){
             formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_services[prop]['value']));
         }
@@ -67,6 +70,21 @@ class MySelect_services extends React.Component {
             body: formBody
         }).then(res => res.json())
             .then(data => this.setState({service: data}))
+            .then(db => {
+                    for (let prop in this.state.service){
+                        formPrice.push(encodeURIComponent('_id') + "=" + encodeURIComponent(this.state.service[prop]));
+                    }
+                    formPrice = formPrice.join("&");
+                    fetch('/api/fix/price', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: formPrice
+                    }).then(res => res.json())
+                        .then(data => this.setState({price: data}))
+                }
+            )
             .catch(err => console.log("err: =" + err));
     };
 
@@ -340,9 +358,9 @@ class Fix_all extends Component{
                 text: 'Вид услуги',
                 sort: true,
                 selected: false,
-                    editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                        <MySelect_services value={value} _id = {row._id}/>
-                        )
+                editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
+                    <MySelect_services value={value} _id = {row._id}/>
+                )
             },
             {
                 dataField: 'object',
@@ -461,6 +479,13 @@ class Fix_all extends Component{
                 },
             },
             {
+                dataField: 'price',
+                text: 'Цена',
+                editable: false,
+                sort: true,
+                selected: false,
+            },
+            {
                 dataField: 'status',
                 text: 'Статус услуги',
                 sort: true,
@@ -512,17 +537,21 @@ class Fix_all extends Component{
                     return true;
                 },
             },
-            ],
+            {
+                dataField: 'etc',
+                text: 'Примечание',
+                editable: false,
+                sort: true,
+                selected: false,
+            },
+
+        ],
         selected: []
     };
     componentDidMount() {
         fetch('/api/fix/all').then(res => res.json())
             .then(data => this.setState({products: data}))
     };
-    handleDataChange = ({ dataSize }) => {
-        this.setState({ rowCount: dataSize });
-    };
-
     render() {
 
         if (this.state.clients_list === null){
@@ -602,6 +631,7 @@ class Fix_all extends Component{
 
                                                 {...props.baseProps}
                                             />
+
                                         </div>
                                     )
                                 }

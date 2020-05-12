@@ -35,6 +35,7 @@ class MySelect_services extends React.Component {
         this.state= {
             _id: '',
             service: '',
+            price: '',
             status: '',
             services_list: null,
             selectedOption_services: [],
@@ -57,14 +58,14 @@ class MySelect_services extends React.Component {
             },
             body: formBody
         }).then(res => res.json())
-            .then(data =>  window.location.assign('http://localhost:3000/All_fix/'))
+            .then(data =>  window.location.assign('http://localhost:3000/My_fix/'))
             .catch(err => console.log("err: =" + err));
     };
 
     handleChange_services = selectedOption_services => {
         this.setState({ selectedOption_services });
-        console.log(selectedOption_services);
         let formBody=[];
+        let formPrice=[];
         for (let prop in selectedOption_services){
             formBody.push(encodeURIComponent('name') + "=" + encodeURIComponent(selectedOption_services[prop]['value']));
         }
@@ -77,6 +78,21 @@ class MySelect_services extends React.Component {
             body: formBody
         }).then(res => res.json())
             .then(data => this.setState({service: data}))
+            .then(db => {
+                    for (let prop in this.state.service){
+                        formPrice.push(encodeURIComponent('_id') + "=" + encodeURIComponent(this.state.service[prop]));
+                    }
+                    formPrice = formPrice.join("&");
+                    fetch('/api/fix/price', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: formPrice
+                    }).then(res => res.json())
+                        .then(data => this.setState({price: data}))
+                }
+            )
             .catch(err => console.log("err: =" + err));
     };
 
@@ -157,7 +173,7 @@ class MySelect_objects extends React.Component {
             },
             body: formBody
         }).then(res => res.json())
-            .then(data =>  window.location.assign('http://localhost:3000/All_fix/'))
+            .then(data =>  window.location.assign('http://localhost:3000/My_fix/'))
             .catch(err => console.log("err: =" + err));
     };
 
@@ -256,7 +272,7 @@ class MySelect_clients extends React.Component {
             },
             body: formBody
         }).then(res => res.json())
-            .then(data =>  window.location.assign('http://localhost:3000/All_fix/'))
+            .then(data =>  window.location.assign('http://localhost:3000/My_fix/'))
             .catch(err => console.log("err: =" + err));
     };
 
@@ -325,6 +341,7 @@ class MySelect_clients extends React.Component {
         )
     }
 }
+
 let formBody = [];
 class My_fix extends Component{
     state = {
@@ -412,7 +429,7 @@ class My_fix extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/All_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/My_fix/'))
                         .catch(err => console.log("err: =" + err));
 
                 },
@@ -461,10 +478,17 @@ class My_fix extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/All_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/My_fix/'))
                         .catch(err => console.log("err: =" + err));
 
                 },
+            },
+            {
+                dataField: 'price',
+                text: 'Цена',
+                editable: false,
+                sort: true,
+                selected: false,
             },
             {
                 dataField: 'status',
@@ -513,10 +537,17 @@ class My_fix extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/All_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/My_fix/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
                 },
+            },
+            {
+                dataField: 'etc',
+                text: 'Примечание',
+                editable: false,
+                sort: true,
+                selected: false,
             },
         ],
         selected: []
