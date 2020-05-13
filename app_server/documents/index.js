@@ -1,5 +1,17 @@
-module.exports = ({ name, price1, price2, receiptId }) => {
-    const today = new Date();
+
+module.exports = ({ selectedOption_services, price, selectedOption_clients, selectedOption_objects}) => {
+    state = {
+        serverOtvet: '',
+        products: [],
+        columns: [
+            {
+                dataField: '_id',
+                isKey: true,
+                hidden: true
+            },
+        ]
+    };
+        const today = new Date();
     return `
     <!doctype html>
     <html>
@@ -106,30 +118,25 @@ module.exports = ({ name, price1, price2, receiptId }) => {
                          </tr>
                          <tr>
                             <td>
-                               заказчик: ${name}
+                               заказчик: ${selectedOption_clients}
                             </td>
                             <td>
-                               Объект: ${receiptId}
+                               Объект: ${selectedOption_objects}
                             </td>
                          </tr>
                       </table>
                    </td>
                 </tr>
-                <tr class="heading">
-                   <td>Услуги:</td>
+                 <tr class="heading">
+                   <td>Bought items:</td>
                    <td>Цена</td>
                 </tr>
                 <tr class="item">
-                   <td>First item:</td>
-                   <td>${price1}$</td>
-                </tr>
-                <tr class="item">
-                   <td>Second item:</td>
-                   <td>${price2}$</td>
+                   <td>${selectedOption_services}$</td>
+                   <td>${price}$</td>
                 </tr>
              </table>
              <br />
-             <h1 class="justify-center">итого: ${parseInt(price1) + parseInt(price2)}$</h1>
           </div>
        </body>
     </html>

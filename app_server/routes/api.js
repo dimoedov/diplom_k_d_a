@@ -8,8 +8,7 @@ let Service = require("../models/service");
 let Object = require("../models/object");
 let client = require("../models/client");
 let Fix = require("../models/fix");
-const pdf = require('html-pdf');
-
+const next = require('jade');
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -194,7 +193,7 @@ router.patch('/users/upgrade', function (req, res) {
       }
       User.save((err, data) => {
         if(err){
-          return res.json({success: false, msg: 'Update CarFix failed.'});
+          return res.json({success: false, msg: 'Update users failed.'});
         }
         return res.json({success: true, msg: 'Successful Update ' + data});
       });
@@ -384,7 +383,7 @@ router.post('/fix', function(req, res) {
       if (err) {
         return res.json({success: false, msg: 'Save Service failed.'});
       }
-      res.json({success: true, msg: 'Successful created new Service.'});
+      res.json({success: true, msg: 'Successful created new Service.',_id:  newFix._id});
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
@@ -434,18 +433,21 @@ router.get('/fix', function(req, res) {
                   buffer.push(Service[param]['name']);
                 }
                 mass[prop].service = buffer.join("\n");
-                res.json(mass)
+
               })
             })
           })
-        })
-            .catch(err => res.json(err))
+        }).catch(err => res.json(err));
+
       }
-    })
+
+    }).then(db => setTimeout(dt =>  res.json(mass),100));
+
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+
 router.get('/fix/all', function(req, res) {
   let token = req.cookies.Authorized;
   let mass = [];
@@ -490,14 +492,13 @@ router.get('/fix/all', function(req, res) {
                   buffer.push(Service[param]['name']);
                 }
                 mass[prop].service = buffer.join("\n");
-                res.json(mass)
               })
             })
           })
         })
             .catch(err => res.json(err))
       }
-    })
+    }).then(db => setTimeout(dt =>  res.json(mass),100));
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
@@ -703,19 +704,52 @@ router.post('/fix/price', function(req, res) {
   }
 });
 
-//создание чека
-router.post('/create-pdf', (req, res) => {
-  pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
-    if(err) {
-      res.send(Promise.reject());
-    }
-
-    res.send(Promise.resolve());
-  });
+//получение услуг для чека и их цены
+router.post('/check', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    Fix.find({
+    _id: req.body.id_new_fix
+    },function (err, obj){
+      if (err) return next(err);
+      Service.find({
+        _id: obj[0].service.split(',')
+      },function (err, service) {
+        if (err) return next(err);
+        res.json(service);
+      })
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
 });
-router.get('/fetch-pdf', (req, res) => {
-  res.sendFile(`${__dirname}/result.pdf`)
+//получение названия и цены по ид
+router.post('/check/price', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    Service.find({
+      _id: req.body._id
+    }, function (err, Service){
+      if (err) return next(err);
+      res.json(Service);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
 });
-//формирование чека
+//получение заказчика и объекта по ид
+router.post('/check', function(req, res) {
+  let token = req.cookies;
+  if (token !== null) {
+    Service.find({
+      _id: req.body._id
+    }, function (err, Service){
+      if (err) return next(err);
+      res.json(Service);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
 
 module.exports = router;

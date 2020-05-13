@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import Select from 'react-select';
 import axios from "axios";
-
+import { saveAs } from 'file-saver';
 const get_cookie = ( cookie_name ) =>
 {
     let results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
@@ -16,6 +16,7 @@ const d = new Date();
 const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
 const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d);
 const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
 class Add_fix extends Component{
     constructor(props) {
         super(props);
@@ -41,7 +42,6 @@ class Add_fix extends Component{
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value});
-        console.log(`${da}-${mo}-${ye}`)
     };
     handleChange_objects = selectedOption_objects => {
         this.setState({ selectedOption_objects });
@@ -81,15 +81,6 @@ class Add_fix extends Component{
     };
     handleDataChange = ({ dataSize }) => {
         this.setState({ rowCount: dataSize });
-    };
-    createAndDownloadPdf = () => {
-        axios.post('/create-pdf', this.state)
-            .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
-            .then((res) => {
-                const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-
-                saveAs(pdfBlob, 'newPdf.pdf');
-            })
     };
     handleChange_services = selectedOption_services => {
         this.setState({ selectedOption_services });
@@ -167,7 +158,8 @@ class Add_fix extends Component{
             return <Redirect to="/" />;
         }else
         if (this.state.serverOtvet.success){
-            return (<Redirect to="/All_fix"/>);
+            localStorage.setItem('fix_id',this.state.serverOtvet._id);
+            return (<Redirect to="/Get_check"/>);
         }else {
             return (
                 <div>
@@ -175,7 +167,7 @@ class Add_fix extends Component{
                         <h1  className='text-center text-dark'>Добавление услуги</h1>
                     </div>
                     <div>
-                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                        <form id='divToPrint' className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className={`form-group input-group`}>
                                 <label htmlFor="service" className='col-sm-3'>Вид услуги </label>
                                 <Select
