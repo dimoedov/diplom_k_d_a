@@ -20,6 +20,8 @@ class Cheklist extends Component{
         this.state= {
             master: localStorage.getItem('fio'),
             id_new_fix: localStorage.getItem('fix_id'),
+            client: '',
+            object: '',
             products: [],
             columns: [
                 {
@@ -73,7 +75,20 @@ class Cheklist extends Component{
             },
             body: formBody
         }).then(res => res.json())
-            .then(data => this.setState({products: data}))
+            .then(data => this.setState({products: data}));
+        fetch('/api/check/names', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formBody
+        }).then(res => res.json())
+            // .then(data => this.setState({products: data}))
+            .then(data => {
+                this.setState({client: data[1]});
+                this.setState({object: data[0]})
+            })
+
     };
 
     render() {
@@ -114,10 +129,10 @@ class Cheklist extends Component{
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    заказчик:
+                                                    Заказчик: {this.state.client}
                                                 </td>
                                                 <td>
-                                                    Объект:
+                                                    Объект: {this.state.object}
                                                 </td>
                                             </tr>
                                         </table>
@@ -136,7 +151,6 @@ class Cheklist extends Component{
                                 props => (
                                     <div>
                                         <BootstrapTable
-                                            onDataSizeChange={ this.handleDataChange }
                                             keyField={'_id'}
                                             data={ this.state.products }
                                             columns={ this.state.columns }

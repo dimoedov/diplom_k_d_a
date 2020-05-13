@@ -723,30 +723,32 @@ router.post('/check', function(req, res) {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
-//получение названия и цены по ид
-router.post('/check/price', function(req, res) {
-  let token = req.cookies;
-  if (token !== null) {
-    Service.find({
-      _id: req.body._id
-    }, function (err, Service){
-      if (err) return next(err);
-      res.json(Service);
-    });
-  } else {
-    return res.status(403).send({success: false, msg: 'Unauthorized.'});
-  }
-});
 //получение заказчика и объекта по ид
-router.post('/check', function(req, res) {
+router.post('/check/names', function(req, res) {
   let token = req.cookies;
+  let names = [];
   if (token !== null) {
-    Service.find({
-      _id: req.body._id
-    }, function (err, Service){
+    Fix.find({
+      _id: req.body.id_new_fix
+    },function (err, obj){
       if (err) return next(err);
-      res.json(Service);
-    });
+      Object.findById({
+        _id: obj[0]['object']
+      },{
+        name: true,
+        _id: false
+      }, function (err, objects) {
+        names.push(objects['name']);
+        client.findById({
+          _id: obj[0]['client']
+        },{
+          name: true,
+          _id: false
+        }, function (err, clients) {
+          names.push(clients.name);
+        }).then(db => setTimeout(dt =>  res.json(names),100))
+      })
+    })
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
