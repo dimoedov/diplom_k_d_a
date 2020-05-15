@@ -22,6 +22,10 @@ let FixSchema = new Schema({
     type: String,
     required: false
   },
+  dateCirca: {
+    type: String,
+    required: false
+  },
   dateEnd: {
     type: String,
     required: false

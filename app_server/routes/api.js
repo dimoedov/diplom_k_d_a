@@ -753,5 +753,129 @@ router.post('/check/names', function(req, res) {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+//получение данных по выручке за период
+router.post('/report_income', function(req, res) {
+  let token = req.cookies;
+  let mass = [];
+  if (token !== null) {
+    Fix.find({
+      dateStart:{
+        $gte: req.body.dateMin
+      },
+      dateEnd:{
+        $lte: req.body.dateMax
+      }
+    },function (err, obj){
+      mass = obj;
+
+      for (let prop in mass){
+        Object.findById({
+          _id: mass[prop]['object']
+        },{
+          name: true,
+          _id: false
+        }, function (err, objects) {
+          mass[prop]['object'] = objects['name'];
+          User.findById({
+            _id: mass[prop]['master']
+          },{
+            last_name: true,
+            name: true,
+            middle_name: true,
+            _id: false
+          }, function (err, users) {
+            mass[prop]['master'] = users['last_name']+' '+users['name']+' '+users['middle_name'];
+            client.findById({
+              _id: mass[prop]['client']
+            },{
+              name: true,
+              _id: false
+            }, function (err, clients) {
+              mass[prop].client = clients.name;
+              Service.find({
+                _id: mass[prop]['service'].split(',')
+              },{
+                name: true,
+                _id: false
+              }, function (err, Service) {
+                let buffer = [];
+                for (let param in Service){
+                  buffer.push(Service[param]['name']);
+                }
+                mass[prop].service = buffer.join("\n");
+              })
+            })
+          })
+        })
+            .catch(err => res.json(err))
+      }
+    }).then(db => setTimeout(dt =>  res.json(mass),100));
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+//получение данных по объекту за период
+router.post('/report_obj', function(req, res) {
+  let token = req.cookies;
+  let mass = [];
+  if (token !== null) {
+    Fix.find({
+      dateStart:{
+        $gte: req.body.dateMin
+      },
+      dateEnd:{
+        $lte: req.body.dateMax
+      },
+      object: req.body.object
+    },function (err, obj){
+      mass = obj;
+
+      for (let prop in mass){
+        Object.findById({
+          _id: mass[prop]['object']
+        },{
+          name: true,
+          _id: false
+        }, function (err, objects) {
+          mass[prop]['object'] = objects['name'];
+          User.findById({
+            _id: mass[prop]['master']
+          },{
+            last_name: true,
+            name: true,
+            middle_name: true,
+            _id: false
+          }, function (err, users) {
+            mass[prop]['master'] = users['last_name']+' '+users['name']+' '+users['middle_name'];
+            client.findById({
+              _id: mass[prop]['client']
+            },{
+              name: true,
+              _id: false
+            }, function (err, clients) {
+              mass[prop].client = clients.name;
+              Service.find({
+                _id: mass[prop]['service'].split(',')
+              },{
+                name: true,
+                _id: false
+              }, function (err, Service) {
+                let buffer = [];
+                for (let param in Service){
+                  buffer.push(Service[param]['name']);
+                }
+                mass[prop].service = buffer.join("\n");
+              })
+            })
+          })
+        })
+            .catch(err => res.json(err))
+      }
+    }).then(db => setTimeout(dt =>  res.json(mass),100));
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
 
 module.exports = router;

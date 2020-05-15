@@ -25,8 +25,9 @@ class Add_fix extends Component{
             object: '',
             client: '',
             dateStart: `${ye}-${mo}-${da}`,
+            dateCirca: '',
             dateEnd: '',
-            status: '',
+            status: 'В обработке',
             etc: '',
             price: '',
             objects_list: null,
@@ -206,16 +207,10 @@ class Add_fix extends Component{
                                        onChange={this.handleUserInput}/>
                             </div>
                             <div className={`form-group input-group`}>
-                                <label htmlFor="dateEnd" className='col-sm-3'>Дата окончания работ</label>
-                                <input type="date" required className="form-control col-sm-8" name="dateEnd"
-                                       value={this.state.dateEnd}
-                                       onChange={this.handleUserInput}/>
-                            </div>
-                            <div className={`form-group input-group`}>
-                                <label htmlFor="status" className='col-sm-3'>Статус</label>
-                                <input type="text" required className="form-control col-sm-8" name="status"
-                                       placeholder="Статус"
-                                       value={this.state.status}
+                                <label htmlFor="dateEnd" className='col-sm-3'>Примерное время выполнения работ</label>
+                                <input type="text" required className="form-control col-sm-8" name="dateCirca"
+                                       placeholder="Пример 1 месяц(день, час, год)"
+                                       value={this.state.dateCirca}
                                        onChange={this.handleUserInput}/>
                             </div>
                             <div className={`form-group input-group`}>

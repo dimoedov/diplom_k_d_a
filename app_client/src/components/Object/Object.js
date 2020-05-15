@@ -42,6 +42,13 @@ class Object_table extends Component{
                 selected: false,
             },
             {
+                dataField: 'name',
+                text: 'Название',
+                sort: true,
+                selected: false,
+                editable: false
+            },
+            {
                 dataField: 'date_start',
                 text: 'Дата производства',
                 sort: true,
@@ -382,7 +389,6 @@ class Object_table extends Component{
                                             <MyExportCSV  {...props.csvProps}>Export</MyExportCSV>
                                         </div>
                                         <hr/>
-                                        <h5>Row Count:<span className="badge">{this.state.rowCount}</span></h5>
                                         <BootstrapTable
                                             onDataSizeChange={this.handleDataChange}
                                             keyField={'_id'}
@@ -434,7 +440,6 @@ class Object_table extends Component{
                                             </button>
                                         </div>
                                         <hr/>
-                                        <h5>Row Count:<span className="badge">{this.state.rowCount}</span></h5>
                                         <BootstrapTable
                                             onDataSizeChange={this.handleDataChange}
                                             keyField={'_id'}

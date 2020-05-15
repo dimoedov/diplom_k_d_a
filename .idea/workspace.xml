@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb1365a-3513-48fa-b81a-a1112417be30" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Report_income/Report_income.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Report_obj/Report_obj.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Cheklist/Cheklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Cheklist/Cheklist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Cheklist/pdf.css" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Cheklist/pdf.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Users/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/fix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +30,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1YbOc32PWmiqrUiXdfB9bziVJi0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -44,7 +62,8 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="service.view.auto.scroll.from.source" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -68,7 +87,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="npm.Запуск сервера в режиме отладки">
+  <component name="RunManager" selected="npm.Запуск клиента">
     <configuration name="Запуск сервера в режиме отладки" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
@@ -89,7 +108,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm" temporary="true">
+    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
       <scripts>
@@ -130,8 +149,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.Запуск клиента" />
       <item itemvalue="npm.Запуск сервера в режиме отладки" />
+      <item itemvalue="npm.Запуск клиента" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -145,14 +164,12 @@
           </treeState>
         </serviceView>
         <serviceView>
-          <option name="contentProportion" value="0.14652406" />
           <treeState>
             <expand />
             <select />
           </treeState>
-          <option name="groupByServiceGroups" value="false" />
           <option name="isSelected" value="true" />
-          <option name="viewType" value="group" />
+          <option name="viewType" value="service" />
           <option name="roots">
             <list>
               <ServiceState>
@@ -160,6 +177,30 @@
                   <list>
                     <option value="Run Dashboard" />
                     <option value="js.build_tools.npm" />
+                    <option value="js.build_tools.npm/Running" />
+                    <option value="js.build_tools.npm/Запуск сервера в режиме отладки" />
+                  </list>
+                </option>
+                <option name="contributor" value="com.intellij.execution.dashboard.RunDashboardServiceViewContributor" />
+              </ServiceState>
+            </list>
+          </option>
+        </serviceView>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+          <option name="viewType" value="service" />
+          <option name="roots">
+            <list>
+              <ServiceState>
+                <option name="path">
+                  <list>
+                    <option value="Run Dashboard" />
+                    <option value="js.build_tools.npm" />
+                    <option value="js.build_tools.npm/Running" />
+                    <option value="js.build_tools.npm/Запуск клиента" />
                   </list>
                 </option>
                 <option name="contributor" value="com.intellij.execution.dashboard.RunDashboardServiceViewContributor" />
@@ -214,6 +255,11 @@
       <workItem from="1589281249786" duration="18624000" />
       <workItem from="1589369611844" duration="3239000" />
       <workItem from="1589375289527" duration="18353000" />
+      <workItem from="1589404101762" duration="382000" />
+      <workItem from="1589405362698" duration="331000" />
+      <workItem from="1589466228433" duration="10276000" />
+      <workItem from="1589483377998" duration="5619000" />
+      <workItem from="1589545814707" duration="9313000" />
     </task>
     <servers />
   </component>
@@ -228,6 +274,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589371427434" />
+    <state x="640" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1589404454756">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="640" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589404454756" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587991361043">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -240,34 +290,34 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="447" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243409890" />
-    <state width="1899" height="120" key="GridCell.Tab.0.bottom" timestamp="1589402517728">
+    <state width="1892" height="241" key="GridCell.Tab.0.bottom" timestamp="1589551394918">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="120" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589402517728" />
+    <state width="1892" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394918" />
     <state width="1579" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.bottom/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1899" height="120" key="GridCell.Tab.0.center" timestamp="1589402517725">
+    <state width="1892" height="241" key="GridCell.Tab.0.center" timestamp="1589551394918">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="120" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589402517725" />
+    <state width="1892" height="241" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394918" />
     <state width="1579" height="255" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.center/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1899" height="120" key="GridCell.Tab.0.left" timestamp="1589402517725">
+    <state width="1892" height="241" key="GridCell.Tab.0.left" timestamp="1589551394917">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="120" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589402517725" />
+    <state width="1892" height="241" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394917" />
     <state width="1579" height="255" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.left/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1899" height="120" key="GridCell.Tab.0.right" timestamp="1589402517726">
+    <state width="1892" height="241" key="GridCell.Tab.0.right" timestamp="1589551394918">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="120" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589402517726" />
+    <state width="1892" height="241" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394918" />
     <state width="1579" height="255" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
     <state width="1897" height="258" key="GridCell.Tab.0.right/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state x="461" y="183" key="SettingsEditor" timestamp="1589234694974">
+    <state x="461" y="183" key="SettingsEditor" timestamp="1589404427220">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="461" y="183" key="SettingsEditor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589234694974" />
+    <state x="461" y="183" key="SettingsEditor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589404427220" />
     <state x="616" y="250" key="run.anything.popup" timestamp="1588968974397">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

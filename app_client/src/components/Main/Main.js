@@ -17,6 +17,8 @@ import Add_fix from "../Add_fix/Add_fix";
 import Fix_all from "../Fix_all/Fix_all";
 import My_fix from "../Fix/Fix";
 import Cheklist from "../Cheklist/Cheklist";
+import Report_obj from "../Report_obj/Report_obj";
+import Report_income from "../Report_income/Report_income";
 
 function Main() {
     return (
@@ -39,6 +41,8 @@ function Main() {
                         <Route path='/My_fix' component={My_fix}/>
                         <Route path='/All_fix' component={Fix_all}/>
                         <Route path='/Get_check' component={Cheklist}/>
+                        <Route path='/Report_obj' component={Report_obj}/>
+                        <Route path='/Report_income' component={Report_income}/>
                         <Route path="*" component={Error} status={404}/>
                     </Switch>
                 </Suspense>

@@ -435,6 +435,13 @@ class My_fix extends Component{
                 },
             },
             {
+                dataField: 'dateCirca',
+                text: 'Дата начала',
+                sort: true,
+                selected: false,
+                editable: false
+            },
+            {
                 dataField: 'dateEnd',
                 text: 'Дата окончания',
                 sort: true,
@@ -656,7 +663,6 @@ class My_fix extends Component{
                                                 <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                             </div>
                                             <hr />
-                                            <h5>Row Count:<span className="badge">{this.state.rowCount}</span></h5>
                                             <BootstrapTable
                                                 onDataSizeChange={ this.handleDataChange }
                                                 keyField={'_id'}

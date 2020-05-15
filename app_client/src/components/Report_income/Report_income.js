@@ -1,24 +1,23 @@
 import React, {Component} from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf-with-html2canvas';
-import './pdf.css'
 import BootstrapTable from "react-bootstrap-table-next";
-import filterFactory from "react-bootstrap-table2-filter";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
+
+const today = new Date();
+
 function priceFormatter(cell, row) {
     return (
         <span>{ cell } Руб.</span>
     );
 }
-const today = new Date();
-class Cheklist extends Component{
+
+class Report_income extends Component{
     constructor(props) {
         super(props);
         this.state= {
-            master: localStorage.getItem('fio'),
-            id_new_fix: localStorage.getItem('fix_id'),
-            client: '',
-            object: '',
+            dateMin:'',
+            dateMax:'',
             products: [],
             columns: [
                 {
@@ -27,8 +26,23 @@ class Cheklist extends Component{
                     hidden: true
                 },
                 {
-                    dataField: 'name',
-                    text: 'Услуга',
+                    dataField: 'master',
+                    text: 'ФИО мастера',
+                    footer: ''
+                },
+                {
+                    dataField: 'service',
+                    text: 'Вид услуги',
+                    footer: ''
+                },
+                {
+                    dataField: 'object',
+                    text: 'Объект обслуживания',
+                    footer: ''
+                },
+                {
+                    dataField: 'client',
+                    text: 'Клиент',
                     footer: 'Итого:'
                 },
                 {
@@ -36,7 +50,7 @@ class Cheklist extends Component{
                     text: 'Цена',
                     formatter: priceFormatter,
                     footer: columnData => columnData.reduce((acc, item) => acc + item, 0)+' Руб.',
-                },
+                }
             ]
         }
     }
@@ -45,27 +59,31 @@ class Cheklist extends Component{
         html2canvas(input)
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF();
-                pdf.addImage(imgData, 'JPEG', 0, 0);
-                pdf.save("download.pdf");
-                localStorage.removeItem('fix_id');
-                window.location.assign('http://localhost:3000/My_fix/');
+                const pdf = new jsPDF({
+                    orientation: 'landscape'
+                });
+                pdf.addImage(imgData, 'JPEG', -2, -2);
+                pdf.save("Report_income.pdf");
             })
         ;
     }
 
-    handleRedirect() {
-        window.location.assign('http://localhost:3000/My_fix/');
-    }
-    componentDidMount() {
+    handleUserInput = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState({[name]: value});
+    };
+    handleSubmit = (e) =>{
+        e.preventDefault();
         let formBody = [];
-        for (let prop in this.state) {
+        let state = this.state;
+        for (let prop in state) {
             let encodedKey = encodeURIComponent(prop);
-            let encodedValue = encodeURIComponent(this.state[prop]);
+            let encodedValue = encodeURIComponent(state[prop]);
             formBody.push(encodedKey + "=" + encodedValue);
         }
         formBody = formBody.join("&");
-        fetch('/api/check', {
+        fetch('/api/report_income', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -73,29 +91,43 @@ class Cheklist extends Component{
             body: formBody
         }).then(res => res.json())
             .then(data => this.setState({products: data}));
-        fetch('/api/check/names', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formBody
-        }).then(res => res.json())
-            // .then(data => this.setState({products: data}))
-            .then(data => {
-                this.setState({client: data[1]});
-                this.setState({object: data[0]})
-            })
-
     };
 
     render() {
         return (
             <div>
                 <div className="mb5">
-                    <button onClick={this.printDocument} className='btn-outline-primary'>Сохранить чек</button>
-                    <button onClick={this.handleRedirect} className='btn-outline-danger'>Не сохранять чек</button>
+                    <form onSubmit={this.handleSubmit}>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label htmlFor="dateMin" >Минимальная дата:</label>
+                                </td>
+                                <td>
+                                    <input type="date" required name="dateMin"
+                                           value={this.state.dateMin}
+                                           onChange={this.handleUserInput}/>
+                                </td>
+                                <td>
+                                    <label htmlFor="dateMax">Максимальная дата:</label>
+                                </td>
+                                <td>
+                                    <input type="date" required name="dateMax"
+                                           value={this.state.dateMax}
+                                           onChange={this.handleUserInput}/>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <button type='submit' className='btn-outline-primary'>Сформировать отчёт</button>
+                                    <button onClick={this.printDocument} className='btn-outline-danger'>Сохранить Отчёт</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
-                <div id="divToPrint" className="mt4">
+                <div id="divToPrint" className="mt-5 mt3">
                     <div>
                         <div className="invoice-box">
                             <table cellPadding="0" cellSpacing="0">
@@ -113,29 +145,8 @@ class Cheklist extends Component{
                                         </table>
                                     </td>
                                 </tr>
-                                <tr className="information">
-                                    <td colSpan="2">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    Исполнитель: {this.state.master}
-                                                </td>
-                                                <td>
-                                                    Номер: {this.state.id_new_fix}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Заказчик: {this.state.client}
-                                                </td>
-                                                <td>
-                                                    Объект: {this.state.object}
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
                             </table>
+                            <h1 className='text-lg-center'>Отчёт о выручке компании</h1>
                         </div>
                     </div>
                     <div>
@@ -151,9 +162,6 @@ class Cheklist extends Component{
                                             keyField={'_id'}
                                             data={ this.state.products }
                                             columns={ this.state.columns }
-                                            filter={ filterFactory() }
-                                            tabIndexCell
-                                            bordered={ false }
 
                                             { ...props.baseProps }
                                         />
@@ -168,5 +176,5 @@ class Cheklist extends Component{
     }
 }
 
-export default Cheklist;
+export default Report_income;
 

@@ -291,7 +291,6 @@ class Price extends Component{
                                             <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                         </div>
                                         <hr />
-                                        <h5>Row Count:<span className="badge">{ this.state.rowCount }</span></h5>
                                         <BootstrapTable
                                             onDataSizeChange={ this.handleDataChange }
                                             keyField={'_id'}
@@ -339,7 +338,6 @@ class Price extends Component{
                                             <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                         </div>
                                         <hr />
-                                        <h5>Row Count:<span className="badge">{ this.state.rowCount }</span></h5>
                                         <BootstrapTable
                                             onDataSizeChange={ this.handleDataChange }
                                             keyField={'_id'}
