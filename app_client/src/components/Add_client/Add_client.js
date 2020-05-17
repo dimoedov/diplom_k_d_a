@@ -62,7 +62,7 @@ class Add_client extends Component{
             return (
                 <div>
                     <div>
-                        <h1  className='text-center text-dark'>Добавление услуги</h1>
+                        <h1  className='text-center text-dark'>Добавление клиента</h1>
                     </div>
                     <div>
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>

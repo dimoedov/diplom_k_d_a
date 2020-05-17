@@ -374,6 +374,7 @@ router.post('/fix', function(req, res) {
       object: req.body.object,
       client: req.body.client,
       dateStart: req.body.dateStart,
+      dateCirca: req.body.dateCirca,
       dateEnd: req.body.dateEnd,
       price: req.body.price,
       status: req.body.status,
@@ -541,6 +542,9 @@ router.patch('/fix/upgrade', function (req, res) {
       }
       if(req.body.dateStart){
         Fix.dateStart = req.body.dateStart;
+      }
+      if(req.body.dateCirca){
+        Fix.dateCirca = req.body.dateCirca;
       }
       if(req.body.dateEnd){
         Fix.dateEnd = req.body.dateEnd;

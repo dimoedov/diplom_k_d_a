@@ -429,7 +429,7 @@ class Fix_all extends Component{
             },
             {
                 dataField: 'dateCirca',
-                text: 'Дата начала',
+                text: 'Примерная дата выполнения',
                 sort: true,
                 selected: false,
                 editable: false

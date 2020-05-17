@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import Select from 'react-select';
-import axios from "axios";
-import { saveAs } from 'file-saver';
 const get_cookie = ( cookie_name ) =>
 {
     let results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
@@ -207,7 +205,7 @@ class Add_fix extends Component{
                                        onChange={this.handleUserInput}/>
                             </div>
                             <div className={`form-group input-group`}>
-                                <label htmlFor="dateEnd" className='col-sm-3'>Примерное время выполнения работ</label>
+                                <label htmlFor="dateCirca" className='col-sm-3'>Примерное время выполнения работ</label>
                                 <input type="text" required className="form-control col-sm-8" name="dateCirca"
                                        placeholder="Пример 1 месяц(день, час, год)"
                                        value={this.state.dateCirca}

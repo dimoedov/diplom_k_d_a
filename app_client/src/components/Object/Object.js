@@ -252,6 +252,9 @@ class Object_table extends Component{
                 validator: (newValue, row, column) => {
                     formBody = [];
                     for (let prop in row) {
+                        console.log(newValue);
+                        console.log(row);
+                        console.log(column);
                         if (prop === 'etc'){
                             if (prop === column.dataField){
                                 let encodedKey = encodeURIComponent(prop);

@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {Switch} from 'react-router-dom'
 import './Header.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import NavItem from "react-bootstrap/NavItem";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 class Header extends Component {
@@ -33,6 +31,7 @@ class Header extends Component {
                                 <Nav.Link> <Link className="nav-link text-white-50 text-decoration-none" to='/Objects'> Объекты </Link> </Nav.Link>
                             </Nav>
                             <Nav>
+                                <Nav.Link><Link className="nav-link text-white-50 text-decoration-none" to='/Help'>Помощь</Link></Nav.Link>
                                 <NavDropdown title='Отчёты' id="collasible-nav-dropdown">
                                     <NavDropdown.Item> <Link className="nav-link text-black-50 text-decoration-none" to='/Report_obj'>Объект обслуживания</Link> </NavDropdown.Item>
                                     <NavDropdown.Divider />
@@ -60,43 +59,11 @@ class Header extends Component {
                                 <Nav.Link> <Link className="nav-link text-white-50 text-decoration-none" to='/Users'> Работники </Link> </Nav.Link>
                             </Nav>
                             <Nav>
+                                <Nav.Link><Link className="nav-link text-white-50 text-decoration-none" to='/Help'>Помощь</Link></Nav.Link>
                                 <Nav.Link> <Link className="nav-link text-white-50 text-decoration-none" to='/Auth'> Войти </Link> </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
-                    // <header className='header bg-secondary text-white'>
-                    //     <div className="container">
-                    //         <div className="row" >
-                    //             <div className="col-lg-2">
-                    //                 <div className="header__tel">
-                    //                     OOO"БКОФ"  <br/> "BKOF" udp.
-                    //                 </div>
-                    //             </div>
-                    //             <div className="col-lg-8">
-                    //                 <nav className="topnav">
-                    //                     <ul className="nav nav-pills">
-                    //                         <li className="nav-item">
-                    //                             <Link className="nav-link text-white active" to='/'>О нас</Link>
-                    //                         </li>
-                    //                     </ul>
-                    //                     <ul className="nav nav-pills">
-                    //                         <li className="nav-item">
-                    //                             <Link className="nav-link text-white active" to='/Price'>Цены</Link>
-                    //                         </li>
-                    //                     </ul>
-                    //                     <ul className="nav nav-pills">
-                    //                         <li className="nav-item">
-                    //                             <Link className="nav-link text-white active" to='/Users'>Работники</Link>
-                    //                         </li>
-                    //                     </ul>
-                    //                 </nav>
-                    //             </div>
-                    //             <div className="col-lg-2">
-                    //                 <Link  to='/Auth'><button type="button " className="flex-column btn btn-primary btn-dark text-white btn-lg btn-block">Войти</button></Link>
-                    //             </div>
-                    //         </div>
-                    //     </div>
-                    // </header>
                 );
             }
         }

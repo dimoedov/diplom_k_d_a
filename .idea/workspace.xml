@@ -2,21 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb1365a-3513-48fa-b81a-a1112417be30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Report_income/Report_income.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Report_obj/Report_obj.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Help/Help.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_client/src/components/Help/Help.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_err.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_password.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_res.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_max.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_min.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_obj.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_save.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_show.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Header.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages__izm_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages__izm_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages__izm_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_del_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_del_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_del_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_exp_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_exp_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_err.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_famil.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_name.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_otchestvo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_password.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_res.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Cheklist/Cheklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Cheklist/Cheklist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Cheklist/pdf.css" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Cheklist/pdf.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Users/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Users/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/models/fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/result.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,14 +65,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="diplom_k_d_a" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -50,7 +88,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -58,7 +95,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app_client/src/components/Error" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -67,16 +104,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_server\public\images\Register" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_server\public\images\Auth" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_server\public" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Help" />
+      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_server" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Error" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_users" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_service" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_object" />
       <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Add_client" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components\Cheklist" />
-      <recent name="C:\Users\FiliusDM\Documents\GitHub\diplom_k_d_a\app_client\src\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -87,7 +127,27 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="npm.Запуск клиента">
+  <component name="RunManager" selected="npm.запуск сервера в автоматическом режиме">
+    <configuration name="запуск сервера в автоматическом режиме" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/app_server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="startNodemon" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Запуск сервера в режиме отладки" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/app_server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="startNodemon" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="Запуск сервера в режиме отладки" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
@@ -118,16 +178,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/app_server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="Запуск клиента" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_client/package.json" />
       <command value="run" />
@@ -138,78 +188,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="Запуск сервера в режиме отладки" type="js.build_tools.npm">
+    <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
       <scripts>
-        <script value="startNodemon" />
+        <script value="start" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.Запуск сервера в режиме отладки" />
+      <item itemvalue="npm.запуск сервера в стандартном режиме" />
+      <item itemvalue="npm.запуск сервера в автоматическом режиме" />
       <item itemvalue="npm.Запуск клиента" />
     </list>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.6780303" />
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-          <option name="isSelected" value="true" />
-          <option name="viewType" value="service" />
-          <option name="roots">
-            <list>
-              <ServiceState>
-                <option name="path">
-                  <list>
-                    <option value="Run Dashboard" />
-                    <option value="js.build_tools.npm" />
-                    <option value="js.build_tools.npm/Running" />
-                    <option value="js.build_tools.npm/Запуск сервера в режиме отладки" />
-                  </list>
-                </option>
-                <option name="contributor" value="com.intellij.execution.dashboard.RunDashboardServiceViewContributor" />
-              </ServiceState>
-            </list>
-          </option>
-        </serviceView>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-          <option name="viewType" value="service" />
-          <option name="roots">
-            <list>
-              <ServiceState>
-                <option name="path">
-                  <list>
-                    <option value="Run Dashboard" />
-                    <option value="js.build_tools.npm" />
-                    <option value="js.build_tools.npm/Running" />
-                    <option value="js.build_tools.npm/Запуск клиента" />
-                  </list>
-                </option>
-                <option name="contributor" value="com.intellij.execution.dashboard.RunDashboardServiceViewContributor" />
-              </ServiceState>
-            </list>
-          </option>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -259,25 +252,29 @@
       <workItem from="1589405362698" duration="331000" />
       <workItem from="1589466228433" duration="10276000" />
       <workItem from="1589483377998" duration="5619000" />
-      <workItem from="1589545814707" duration="9313000" />
+      <workItem from="1589545814707" duration="15104000" />
+      <workItem from="1589583633674" duration="90000" />
+      <workItem from="1589632628133" duration="2558000" />
+      <workItem from="1589657099453" duration="1598000" />
+      <workItem from="1589709763066" duration="24421000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589371427434">
+    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589710079173">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589371427434" />
-    <state x="640" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1589404454756">
+    <state x="413" y="347" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589710079173" />
+    <state x="640" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1589656343551">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="640" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589404454756" />
+    <state x="640" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589656343551" />
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587991361043">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -286,33 +283,34 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="675" y="251" key="#start_(1)/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1583255243884" />
-    <state x="739" y="447" key="FileChooserDialogImpl" timestamp="1588243409890">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="2536" y="373" key="FileChooserDialogImpl" timestamp="1589583670003">
+      <screen x="1920" y="0" width="1600" height="900" />
     </state>
     <state x="739" y="447" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243409890" />
-    <state width="1892" height="241" key="GridCell.Tab.0.bottom" timestamp="1589551394918">
+    <state x="2536" y="373" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589583670003" />
+    <state width="929" height="223" key="GridCell.Tab.0.bottom" timestamp="1589725943234">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1892" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394918" />
-    <state width="1579" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
+    <state width="929" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943234" />
+    <state width="1572" height="177" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179620" />
     <state width="1897" height="258" key="GridCell.Tab.0.bottom/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1892" height="241" key="GridCell.Tab.0.center" timestamp="1589551394918">
+    <state width="929" height="223" key="GridCell.Tab.0.center" timestamp="1589725943234">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1892" height="241" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394918" />
-    <state width="1579" height="255" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
+    <state width="929" height="223" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943234" />
+    <state width="1572" height="177" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179620" />
     <state width="1897" height="258" key="GridCell.Tab.0.center/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1892" height="241" key="GridCell.Tab.0.left" timestamp="1589551394917">
+    <state width="929" height="223" key="GridCell.Tab.0.left" timestamp="1589725943233">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1892" height="241" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394917" />
-    <state width="1579" height="255" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
+    <state width="929" height="223" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943233" />
+    <state width="1572" height="177" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179619" />
     <state width="1897" height="258" key="GridCell.Tab.0.left/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="1892" height="241" key="GridCell.Tab.0.right" timestamp="1589551394918">
+    <state width="929" height="223" key="GridCell.Tab.0.right" timestamp="1589725943234">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1892" height="241" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589551394918" />
-    <state width="1579" height="255" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1586126475990" />
+    <state width="929" height="223" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943234" />
+    <state width="1572" height="177" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179620" />
     <state width="1897" height="258" key="GridCell.Tab.0.right/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
     <state x="461" y="183" key="SettingsEditor" timestamp="1589404427220">
       <screen x="0" y="0" width="1920" height="1080" />

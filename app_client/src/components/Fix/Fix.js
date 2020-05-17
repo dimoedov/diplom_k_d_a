@@ -436,7 +436,7 @@ class My_fix extends Component{
             },
             {
                 dataField: 'dateCirca',
-                text: 'Дата начала',
+                text: 'Примерная дата выполнения',
                 sort: true,
                 selected: false,
                 editable: false
@@ -562,6 +562,7 @@ class My_fix extends Component{
     componentDidMount() {
         fetch('/api/fix').then(res => res.json())
             .then(data => this.setState({products: data}))
+            .then(data => console.log(this.state.products))
             .catch(err => console.log("err: =" + err));
     };
     handleGetSelectedData = () => {

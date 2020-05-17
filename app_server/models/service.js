@@ -4,7 +4,8 @@ let Schema = mongoose.Schema;
 let ServiceSchema = new Schema({
     name: {
         type: String,
-        required: false
+        required: false,
+        unique: true,
     },
     price: {
         type: Number,

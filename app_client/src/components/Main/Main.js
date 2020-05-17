@@ -19,6 +19,7 @@ import My_fix from "../Fix/Fix";
 import Cheklist from "../Cheklist/Cheklist";
 import Report_obj from "../Report_obj/Report_obj";
 import Report_income from "../Report_income/Report_income";
+import Help from "../Help/Help";
 
 function Main() {
     return (
@@ -43,6 +44,7 @@ function Main() {
                         <Route path='/Get_check' component={Cheklist}/>
                         <Route path='/Report_obj' component={Report_obj}/>
                         <Route path='/Report_income' component={Report_income}/>
+                        <Route path='/Help' component={Help}/>
                         <Route path="*" component={Error} status={404}/>
                     </Switch>
                 </Suspense>

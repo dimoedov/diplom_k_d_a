@@ -4,7 +4,8 @@ let Schema = mongoose.Schema;
 let ClientSchema = new Schema({
     name: {
         type: String,
-        required: false
+        required: false,
+        unique: true,
     },
     type: {
         type: String,

@@ -4,7 +4,8 @@ let Schema = mongoose.Schema;
 let ObjectSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     date_start: {
         type: String,
@@ -20,7 +21,8 @@ let ObjectSchema = new Schema({
     },
     calls_obj: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     etc: {
         type: String,
