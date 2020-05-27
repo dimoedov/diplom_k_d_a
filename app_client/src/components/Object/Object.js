@@ -33,6 +33,7 @@ class Object_table extends Component{
     state = {
         serverOtvet: '',
         products: [],
+        NonSelectable: [],
         columns: [
             {
                 dataField: '_id',
@@ -40,6 +41,10 @@ class Object_table extends Component{
                 text: 'Номер услуги',
                 hidden: true,
                 selected: false,
+            },
+            {
+                dataField: 'current_master_id',
+                hidden: true
             },
             {
                 dataField: 'name',
@@ -57,6 +62,14 @@ class Object_table extends Component{
                     type: Type.DATE,
                 },
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     formBody = [];
                     for (let prop in row) {
                         if (prop === 'date_start'){
@@ -103,6 +116,14 @@ class Object_table extends Component{
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
@@ -155,6 +176,14 @@ class Object_table extends Component{
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     formBody = [];
                     for (let prop in row) {
                         if (prop === 'project'){
@@ -201,6 +230,14 @@ class Object_table extends Component{
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     formBody = [];
                     for (let prop in row) {
                         if (prop === 'calls_obj'){
@@ -250,6 +287,14 @@ class Object_table extends Component{
                     type: Type.TEXTAREA
                 },
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     formBody = [];
                     for (let prop in row) {
                         console.log(newValue);
@@ -299,6 +344,17 @@ class Object_table extends Component{
     componentDidMount() {
         fetch('/api/objects').then(res => res.json())
             .then(data => this.setState({products: data}))
+            .then(db => {
+                if (localStorage.getItem('position') !== 'Администратор'){
+                    let non_select = [];
+                    for (let prop in this.state.products){
+                        if (this.state.products[prop].current_master_id !== get_cookie('id').split('"')[1]){
+                            non_select.push(this.state.products[prop]._id)
+                        }
+                    }
+                    this.setState({NonSelectable : non_select})
+                }
+            })
             .catch(err => console.log("err: =" + err));
     };
     handleGetSelectedData = () => {
@@ -358,6 +414,7 @@ class Object_table extends Component{
             bgColor: '#8f0008',
             selected: this.state.selected,
             onSelect: this.handleOnSelect,
+            nonSelectable: this.state.NonSelectable,
             onSelectAll: this.handleOnSelectAll,
             headerColumnStyle: (status) => {
                 if (status === 'checked') {

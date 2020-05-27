@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import BootstrapTable from "react-bootstrap-table-next";
@@ -9,8 +9,7 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 const regExpPrice = /^\d+$/;
 const regExpName = /(^[А-ЯA-Z]{1}[а-яa-z]{1,14} [А-ЯA-Z]{1}[а-яa-z]{1,14}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,14} [а-яa-z]{1,14}$)/;
 
-const get_cookie = ( cookie_name ) =>
-{
+const get_cookie = ( cookie_name ) => {
     let results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
 
     if ( results )
@@ -30,7 +29,7 @@ const MyExportCSV = (props) => {
 };
 
 let formBody = [];
-class Price extends Component{
+class Price extends React.Component{
     state = {
         serverOtvet: '',
         products: [],
@@ -44,11 +43,23 @@ class Price extends Component{
                 selected: false,
             },
             {
+                dataField: 'current_master_id',
+                hidden: true
+            },
+            {
                 dataField: 'name',
                 text: 'Наименование',
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
+                    if ((localStorage.getItem('position') !== 'Администратор') && (get_cookie('Authorized') !== null)){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     if (!regExpName.test(newValue)) {
                         return {
                             valid: false,
@@ -77,7 +88,7 @@ class Price extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Price/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/price/'))
                         .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
@@ -91,6 +102,14 @@ class Price extends Component{
                     Type: Type.Number
                 },
                 validator: (newValue, row, column) => {
+                    if ((localStorage.getItem('position') !== 'Администратор') && (get_cookie('Authorized') !== null)){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     if (!regExpPrice.test(newValue)) {
                         return {
                             valid: false,
@@ -125,7 +144,7 @@ class Price extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Price'))
+                        .then(db =>  window.location.assign('http://localhost:3000/price'))
                         .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
@@ -136,6 +155,14 @@ class Price extends Component{
                 sort: true,
                 selected: false,
                 formatter: (cellContent, row) => {
+                    if ((localStorage.getItem('position') !== 'Администратор') && (get_cookie('Authorized') !== null)){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     if (row.dostyp) {
                         return (
                             <h5>
@@ -182,16 +209,28 @@ class Price extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Price'))
+                        .then(db =>  window.location.assign('http://localhost:3000/price'))
                         .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
             }],
-        selected: []
+        selected: [],
+        NonSelectable : []
     };
     componentDidMount() {
         fetch('/api/service').then(res => res.json())
             .then(data => this.setState({products: data}))
+            .then(db => {
+                if (localStorage.getItem('position') !== 'Администратор'){
+                    let non_select = [];
+                    for (let prop in this.state.products){
+                        if (this.state.products[prop].current_master_id !== get_cookie('id').split('"')[1]){
+                            non_select.push(this.state.products[prop]._id)
+                        }
+                    }
+                    this.setState({NonSelectable : non_select})
+                }
+            })
             .catch(err => this.setState({serverOtvet: err}));
     };
     handleGetSelectedData = () => {
@@ -212,7 +251,7 @@ class Price extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => this.setState({serverOtvet: err}))
-                .then(del =>  window.location.assign('http://localhost:3000/Price'));
+                .then(del =>  window.location.assign('http://localhost:3000/price'));
 
         }
 
@@ -231,7 +270,6 @@ class Price extends Component{
             }));
         }
     };
-
     handleOnSelectAll = (isSelect, rows) => {
         const ids = rows.map(r => r._id);
         if (isSelect) {
@@ -251,6 +289,7 @@ class Price extends Component{
             bgColor: '#8f0008',
             selected: this.state.selected,
             onSelect: this.handleOnSelect,
+            nonSelectable: this.state.NonSelectable,
             onSelectAll: this.handleOnSelectAll,
             headerColumnStyle: (status) => {
                 if (status === 'checked') {
@@ -314,7 +353,7 @@ class Price extends Component{
 
                 </div>
             );
-        }else
+        }else{
             return (
                 <div className="container" style={{ marginTop: 50 }}>
                     <div>
@@ -333,7 +372,7 @@ class Price extends Component{
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Add_price'><button className="btn btn-primary btn-group">Добавить</button></Link>
+                                            <Link to='/add-price'><button className="btn btn-primary btn-group">Добавить</button></Link>
                                             <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                             <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                         </div>
@@ -355,7 +394,7 @@ class Price extends Component{
                                             hover
                                             tabIndexCell
                                             bordered={ false }
-                                            noDataIndication="Услуг не существует"
+                                            noDataIndication="Прайс-лис не заполнен"
 
                                             { ...props.baseProps }
                                         />
@@ -364,10 +403,9 @@ class Price extends Component{
                             }
                         </ToolkitProvider>
                     </div>
-
-
                 </div>
             );
+        }
     }
 }
 

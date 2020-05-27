@@ -15,6 +15,10 @@ let ServiceSchema = new Schema({
         type: Boolean,
         required: false
     },
+    current_master_id: {
+        type: String,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('Service', ServiceSchema);

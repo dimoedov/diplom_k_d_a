@@ -8,12 +8,12 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 
 ReactDOM.render(
-    (<BrowserRouter >
+    (<BrowserRouter>
         <div>
             <Header/>
-            <Main  />
+            <Main/>
         </div>
-     </BrowserRouter >),
+     </BrowserRouter>),
     document.getElementById('root'));
 
 serviceWorker.unregister();

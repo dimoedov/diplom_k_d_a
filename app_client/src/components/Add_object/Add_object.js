@@ -54,7 +54,7 @@ class Add_object extends Component{
             return <Redirect to="/404" />;
         }else
         if (this.state.serverOtvet.success){
-            return (<Redirect to="/Objects"/>);
+            return (<Redirect to="/objects"/>);
         }else {
             return (
                 <div>

@@ -30,17 +30,21 @@ let UserSchema = new Schema({
     }
 });
 
+// кодирование пароля с помощь bcrypt
 UserSchema.pre('save', function (next) {
     let user = this;
     if (this.isModified('password') || this.isNew) {
+        // создание сальта для кодирования пароля
         bcrypt.genSalt(10, function (err, salt) {
             if (err) {
                 return next(err);
             }
+            //кодирование пароля
             bcrypt.hash(user.password, salt, null, function (err, hash) {
                 if (err) {
                     return next(err);
                 }
+                // ставим кодированный пароль вместо введённого пользователем
                 user.password = hash;
                 next();
             });

@@ -14,7 +14,11 @@ let ClientSchema = new Schema({
     contacts: {
         type: String,
         required: false
-    }
+    },
+    current_master_id: {
+        type: String,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('Client', ClientSchema);

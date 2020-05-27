@@ -39,11 +39,15 @@ class Auth extends Component{
         if (this.state.serverOtvet.success){
             localStorage.setItem('fio', this.state.serverOtvet.user);
             localStorage.setItem('position', this.state.serverOtvet.position);
-            return window.location.assign('http://localhost:3000/All_fix');
+            return window.location.assign('http://localhost:3000/all-fix');
         }else {
             let hidden = true;
             if (this.state.serverOtvet !== ''){
                 hidden = this.state.serverOtvet.success;
+            }
+            if (localStorage.getItem('register') === 'true'){
+                window.alert('Регистрация прошла успешно');
+                localStorage.removeItem('register');
             }
             return (
                 <div>
@@ -74,7 +78,7 @@ class Auth extends Component{
                         </form>
                     </div>
                     <div className='text-center'>
-                        <Link to='/Register'> Нет аккаунта? Зарегистрируйтесь :)</Link>
+                        <Link to='/register'> Нет аккаунта? Зарегистрируйтесь :)</Link>
                     </div>
                 </div>
 

@@ -18,6 +18,7 @@ class Add_price extends Component{
             name: '',
             price: '',
             dostyp: true,
+            current_master_id: '',
             serverOtvet: ''
         }
     }
@@ -50,8 +51,9 @@ class Add_price extends Component{
             return <Redirect to="/" />;
         }else
         if (this.state.serverOtvet.success){
-            return (<Redirect to="/Price"/>);
+            return (<Redirect to="/price"/>);
         }else {
+            console.log(this.state.serverOtvet);
             return (
                 <div>
                     <div>

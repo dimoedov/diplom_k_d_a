@@ -49,15 +49,19 @@ class Cheklist extends Component{
                 pdf.addImage(imgData, 'JPEG', 0, 0);
                 pdf.save("download.pdf");
                 localStorage.removeItem('fix_id');
-                window.location.assign('http://localhost:3000/My_fix/');
+                window.location.assign('http://localhost:3000/my-fix/');
             })
         ;
     }
 
     handleRedirect() {
-        window.location.assign('http://localhost:3000/My_fix/');
+        localStorage.removeItem('fix_id');
+        window.location.assign('http://localhost:3000/my-fix/');
     }
     componentDidMount() {
+        if (this.state.id_new_fix === null){
+            window.location.assign('http://localhost:3000/');
+        }
         let formBody = [];
         for (let prop in this.state) {
             let encodedKey = encodeURIComponent(prop);
@@ -80,7 +84,6 @@ class Cheklist extends Component{
             },
             body: formBody
         }).then(res => res.json())
-            // .then(data => this.setState({products: data}))
             .then(data => {
                 this.setState({client: data[1]});
                 this.setState({object: data[0]})

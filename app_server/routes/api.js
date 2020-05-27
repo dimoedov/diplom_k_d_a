@@ -11,24 +11,43 @@ let Fix = require("../models/fix");
 const next = require('jade');
 
 router.post('/signup', function(req, res) {
+  let newUser;
+  let len_usr = 0;
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please pass username and password.'});
   } else {
-    let newUser = new User({
-      last_name: req.body.last_name,
-      name: req.body.name,
-      middle_name: req.body.middle_name,
-      username: req.body.username,
-      password: req.body.password,
-      position: req.body.position
-    });
-    newUser.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Username already exists.'});
-      }
-      res.json({success: true, msg: 'Successful created new user.'});
-    });
-  }
+    let newUser = new User();
+    User.find((err, User) =>{
+      len_usr = User.lenght
+    })
+        .then(fc => {
+          if (len_usr < 1){
+            newUser = new User({
+              last_name: req.body.last_name,
+              name: req.body.name,
+              middle_name: req.body.middle_name,
+              username: req.body.username,
+              password: req.body.password,
+              position: 'Администратор'
+            });
+          } else{
+            newUser = new User({
+              last_name: req.body.last_name,
+              name: req.body.name,
+              middle_name: req.body.middle_name,
+              username: req.body.username,
+              password: req.body.password,
+              position: req.body.position
+            });
+          }
+          newUser.save(function(err) {
+            if (err) {
+              return res.json({success: false, msg: 'Username already exists.'});
+            }
+            res.json({success: true, msg: 'Successful created new user.'});
+          });
+        })
+    }
 });
 
 router.post('/signin', function(req, res) {
@@ -60,6 +79,9 @@ router.get('/signout', function(req, res) {
   res.cookie('Authorized',null,{
     maxAge: 1
   });
+  res.cookie('id',null,{
+    maxAge: 1
+  });
   res.json({success: true, msg: 'signout'});
 });
 
@@ -69,7 +91,8 @@ router.post('/service', function(req, res) {
     let newService = new Service({
       name: req.body.name,
       price: req.body.price,
-      dostyp: req.body.dostyp
+      dostyp: req.body.dostyp,
+      current_master_id: req.cookies.id,
     });
 
     newService.save(function(err) {
@@ -86,10 +109,13 @@ router.post('/service', function(req, res) {
 router.get('/service', function(req, res) {
   let token = req.cookies.Authorized;
   if (token !== null) {
-    Service.find((err, Service) =>{
-      if (err) return next(err);
-      res.json(Service);
-    });
+    Service.find(
+        {},
+        function(err, Service) {
+          if (err) return next(err);
+          res.json(Service);
+        }
+    );
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
@@ -98,16 +124,53 @@ router.get('/service', function(req, res) {
 router.delete('/service/delete/:id', function (req, res) {
   let mass = req.body.selected.split(',');
   let token = req.cookies.Authorized;
+  let mass_del = [];
+  let index_mass = []
+  let can_del = 0;
   if (token !== null) {
-    Service.deleteMany({
-      _id: mass
-    }, function (err) {
-      if (err) {
-        return res.json({success: false, msg: 'Delete Service failed.'});
-      } else {
-        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
-      }
-    })
+    for (let prop in mass) {
+      Fix.find(
+          function (err,Fix) {
+            for (let nom in Fix){
+              let services_id = Fix[nom].service.split(",")
+              for (let i in services_id){
+                if (mass[prop] === services_id[i]){
+                  can_del++;
+                }
+              }
+            }
+            if (can_del === 0){
+              mass_del.push(mass[prop]);
+              index_mass.push(prop);
+            }
+            can_del = 0;
+          }
+      ).then(fc => {
+        for (let i in mass_del){
+          delete mass[mass_del[i]];
+        }
+        let cant_del = [];
+        for (let val in mass){
+          if (mass[val] !== undefined){
+            cant_del.push(mass[val])
+          }
+        }
+            Service.deleteMany({
+              _id: mass_del
+            }, function (err) {
+              if (err) {
+                return res.json({success: false, msg: 'Delete Service failed.'});
+              } else {
+                if (cant_del.length === 0){
+                  return res.json({success: true, msg: 'Successful Delete '});
+                }else{
+                  return res.json({success: true, msg: 'Successful Delete ', cant_del: can_del});
+                }
+              }
+            })
+          }
+      )
+    }
   }
 });
 
@@ -133,7 +196,6 @@ router.patch('/service/upgrade', function (req, res) {
         }
         return res.json({success: true, msg: 'Successful Update ' + data});
       });
-
     });
   }
 });
@@ -208,7 +270,8 @@ router.post('/clients', function(req, res) {
     let newClient = new client({
       name: req.body.name,
       type: req.body.type,
-      contacts: req.body.contacts
+      contacts: req.body.contacts,
+      current_master_id: req.cookies.id,
     });
 
     newClient.save(function(err) {
@@ -237,16 +300,53 @@ router.get('/clients', function(req, res) {
 router.delete('/clients/delete/:id', function (req, res) {
   let mass = req.body.selected.split(',');
   let token = req.cookies.Authorized;
+  let mass_del = [];
+  let index_mass = []
+  let can_del = 0;
   if (token !== null) {
-    client.deleteMany({
-      _id: mass
-    }, function (err) {
-      if (err) {
-        return res.json({success: false, msg: 'Delete client failed.'});
-      } else {
-        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
-      }
-    })
+    for (let prop in mass) {
+      Fix.find(
+          function (err,Fix) {
+            for (let nom in Fix){
+              let services_id = Fix[nom].client.split(",")
+              for (let i in services_id){
+                if (mass[prop] === services_id[i]){
+                  can_del++;
+                }
+              }
+            }
+            if (can_del === 0){
+              mass_del.push(mass[prop]);
+              index_mass.push(prop);
+            }
+            can_del = 0;
+          }
+      ).then(fc => {
+            for (let i in mass_del){
+              delete mass[mass_del[i]];
+            }
+            let cant_del = [];
+            for (let val in mass){
+              if (mass[val] !== undefined){
+                cant_del.push(mass[val])
+              }
+            }
+          client.deleteMany({
+              _id: mass_del
+            }, function (err) {
+              if (err) {
+                return res.json({success: false, msg: 'Delete Service failed.'});
+              } else {
+                if (cant_del.length === 0){
+                  return res.json({success: true, msg: 'Successful Delete '});
+                }else{
+                  return res.json({success: true, msg: 'Successful Delete ', cant_del: can_del});
+                }
+              }
+            })
+          }
+      )
+    }
   }
 });
 
@@ -286,7 +386,8 @@ router.post('/objects', function(req, res) {
       company: req.body.company,
       project: req.body.project,
       calls_obj: req.body.calls_obj,
-      etc: req.body.etc
+      etc: req.body.etc,
+      current_master_id: req.cookies.id,
     });
 
     newObject.save(function(err) {
@@ -315,16 +416,53 @@ router.get('/objects', function(req, res) {
 router.delete('/objects/delete/:id', function (req, res) {
   let mass = req.body.selected.split(',');
   let token = req.cookies.Authorized;
+  let mass_del = [];
+  let index_mass = []
+  let can_del = 0;
   if (token !== null) {
-    Object.deleteMany({
-      _id: mass
-    }, function (err) {
-      if (err) {
-        return res.json({success: false, msg: 'Delete Object failed.'});
-      } else {
-        return res.json({success: true, msg: 'Successful Delete ' + req.params.id});
-      }
-    })
+    for (let prop in mass) {
+      Fix.find(
+          function (err,Fix) {
+            for (let nom in Fix){
+              let services_id = Fix[nom].client.split(",")
+              for (let i in services_id){
+                if (mass[prop] === services_id[i]){
+                  can_del++;
+                }
+              }
+            }
+            if (can_del === 0){
+              mass_del.push(mass[prop]);
+              index_mass.push(prop);
+            }
+            can_del = 0;
+          }
+      ).then(fc => {
+            for (let i in mass_del){
+              delete mass[mass_del[i]];
+            }
+            let cant_del = [];
+            for (let val in mass){
+              if (mass[val] !== undefined){
+                cant_del.push(mass[val])
+              }
+            }
+            Object.deleteMany({
+              _id: mass_del
+            }, function (err) {
+              if (err) {
+                return res.json({success: false, msg: 'Delete Service failed.'});
+              } else {
+                if (cant_del.length === 0){
+                  return res.json({success: true, msg: 'Successful Delete '});
+                }else{
+                  return res.json({success: true, msg: 'Successful Delete ', cant_del: can_del});
+                }
+              }
+            })
+          }
+      )
+    }
   }
 });
 
@@ -413,7 +551,7 @@ router.get('/fix', function(req, res) {
             last_name: true,
             name: true,
             middle_name: true,
-            _id: false
+            _id: true
           }, function (err, users) {
             mass[prop]['master'] = users['last_name']+' '+users['name']+' '+users['middle_name'];
             client.findById({
@@ -434,7 +572,6 @@ router.get('/fix', function(req, res) {
                   buffer.push(Service[param]['name']);
                 }
                 mass[prop].service = buffer.join("\n");
-
               })
             })
           })

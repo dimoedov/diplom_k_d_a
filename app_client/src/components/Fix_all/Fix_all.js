@@ -19,7 +19,7 @@ const get_cookie = ( cookie_name ) =>
         return null;
 };
 
-class MySelect_services extends React.Component {
+class MYSELECT_SERVICES extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
@@ -134,7 +134,7 @@ class MySelect_services extends React.Component {
 
 }
 
-class MySelect_objects extends React.Component {
+class MYSELECT_OBJECTS extends React.Component {
 
     constructor(props) {
         super(props);
@@ -233,7 +233,7 @@ class MySelect_objects extends React.Component {
     }
 }
 
-class MySelect_clients extends React.Component {
+class MYSELECT_CLIENTS extends React.Component {
 
     constructor(props) {
         super(props);
@@ -357,7 +357,7 @@ class Fix_all extends Component{
                 sort: true,
                 selected: false,
                 editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                    <MySelect_services value={value} _id = {row._id}/>
+                    <MYSELECT_SERVICES value={value} _id = {row._id}/>
                 )
             },
             {
@@ -366,7 +366,7 @@ class Fix_all extends Component{
                 sort: true,
                 selected: false,
                 editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                    <MySelect_objects value = {value} _id = {row._id}/>
+                    <MYSELECT_OBJECTS value = {value} _id = {row._id}/>
                 )
             },
             {
@@ -375,7 +375,7 @@ class Fix_all extends Component{
                 sort: true,
                 selected: false,
                 editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                    <MySelect_clients value = {value} _id = {row._id}/>
+                    <MYSELECT_CLIENTS value = {value} _id = {row._id}/>
                 )
             },
             {
@@ -422,7 +422,7 @@ class Fix_all extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/All_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/all_fix/'))
                         .catch(err => console.log("err: =" + err));
 
                 },
@@ -478,7 +478,7 @@ class Fix_all extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/All_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/all_fix/'))
                         .catch(err => console.log("err: =" + err));
 
                 },
@@ -537,7 +537,7 @@ class Fix_all extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/All_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/all_fix/'))
                         .catch(err => console.log("err: =" + err));
                     return true;
                 },

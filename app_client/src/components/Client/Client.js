@@ -6,7 +6,7 @@ import filterFactory from "react-bootstrap-table2-filter";
 import cellEditFactory, {Type} from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-// const regExpName = /^\w+$/;
+// eslint-disable-next-line
 const regExpContact = /(^[\w-\.]+@[\w-]+\.[a-z]{2,4}$)|(^\d[\d\(\)\ -]{4,14}\d$)/i;
 
 const get_cookie = ( cookie_name ) =>
@@ -35,11 +35,16 @@ class Client extends Component{
     state = {
         serverOtvet: '',
         products: [],
+        NonSelectable: [],
         columns: [
             {
                 dataField: '_id',
                 isKey: true,
                 text: 'Номер услуги',
+                hidden: true
+            },
+            {
+                dataField: 'current_master_id',
                 hidden: true
             },
             {
@@ -51,6 +56,14 @@ class Client extends Component{
                     type: Type.TEXTAREA,
                 },
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     formBody = [];
                     for (let prop in row) {
                         if (prop === 'name'){
@@ -86,7 +99,7 @@ class Client extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Clients'))
+                        .then(db =>  window.location.assign('http://localhost:3000/clients'))
                         .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
@@ -107,6 +120,14 @@ class Client extends Component{
                     }]
                 },
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     formBody = [];
                     for (let prop in row) {
                         if (prop === 'type'){
@@ -141,7 +162,7 @@ class Client extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Clients'))
+                        .then(db =>  window.location.assign('http://localhost:3000/clients'))
                         .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
@@ -152,6 +173,14 @@ class Client extends Component{
                 sort: true,
                 selected: false,
                 validator: (newValue, row, column) => {
+                    if (localStorage.getItem('position') !== 'Администратор'){
+                        if (row.current_master_id !== get_cookie('id').split('"')[1]){
+                            return {
+                                valid: false,
+                                message: 'У вас нет прав на изменение данной строки'
+                            }
+                        }
+                    }
                     if (!regExpContact.test(newValue)) {
                         return {
                             valid: false,
@@ -193,7 +222,7 @@ class Client extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/Clients'))
+                        .then(db =>  window.location.assign('http://localhost:3000/clients'))
                         .catch(err => this.setState({serverOtvet: err}));
                     return true;
                 }
@@ -203,6 +232,17 @@ class Client extends Component{
     componentDidMount() {
         fetch('/api/clients').then(res => res.json())
             .then(data => this.setState({products: data}))
+            .then(db => {
+                if (localStorage.getItem('position') !== 'Администратор'){
+                    let non_select = [];
+                    for (let prop in this.state.products){
+                        if (this.state.products[prop].current_master_id !== get_cookie('id').split('"')[1]){
+                            non_select.push(this.state.products[prop]._id)
+                        }
+                    }
+                    this.setState({NonSelectable : non_select})
+                }
+            })
             .catch(err => console.log("err: =" + err));
     };
     handleGetSelectedData = () => {
@@ -223,8 +263,7 @@ class Client extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err))
-                .then(del =>  window.location.assign('http://localhost:3000/Clients'));
-
+                .then(del =>  window.location.assign('http://localhost:3000/clients'));
         }
 
     };
@@ -262,6 +301,7 @@ class Client extends Component{
             bgColor: '#8f0008',
             selected: this.state.selected,
             onSelect: this.handleOnSelect,
+            nonSelectable: this.state.NonSelectable,
             onSelectAll: this.handleOnSelectAll,
             headerColumnStyle: (status) => {
                 if (status === 'checked') {
@@ -344,7 +384,7 @@ class Client extends Component{
                                 props => (
                                     <div>
                                         <div className='btn-group'>
-                                            <Link to='/Add_client'><button className="btn btn-primary btn-group">Добавить</button></Link>
+                                            <Link to='/add-client'><button className="btn btn-primary btn-group">Добавить</button></Link>
                                             <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                             <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                         </div>

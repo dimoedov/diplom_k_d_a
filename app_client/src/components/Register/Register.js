@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import FormErrors from "../FormError/FormError"
 import './register.css';
-import {Redirect} from 'react-router-dom';
 
 class Register extends Component {
     constructor(props) {
@@ -106,7 +105,8 @@ class Register extends Component {
 
     render() {
         if (this.state.serverOtvet.success){
-            return <Redirect to='/Auth'/>;
+            localStorage.setItem('register', 'true')
+            return window.location.assign('http://localhost:3000/auth');
         }else{
             return (
                 <div>

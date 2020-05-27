@@ -1,5 +1,5 @@
 import {Switch, Route} from 'react-router-dom'
-import React, {Suspense} from 'react';
+import React from 'react';
 import Home from '../Home/Home'
 import Auth from '../Auth/Auth'
 import Register from '../Register/Register'
@@ -23,32 +23,28 @@ import Help from "../Help/Help";
 
 function Main() {
     return (
-        <main>
-                <Suspense fallback={<div>Загрузка...</div>}>
-                    <Switch>
-                        <Route exact path='/' component={Home}/>
-                        <Route path='/Auth' component={Auth}/>
-                        <Route path='/Register' component={Register}/>
-                        <Route path='/Signout' component={Signout}/>
-                        <Route path='/Price' component={Price}/>
-                        <Route path='/Users' component={Users}/>
-                        <Route path='/Objects' component={Object_table}/>
-                        <Route path='/Clients' component={Client}/>
-                        <Route path='/Add_client' component={Add_client}/>
-                        <Route path='/Add_users' component={Add_users}/>
-                        <Route path='/Add_object' component={Add_object}/>
-                        <Route path='/Add_price' component={Add_price}/>
-                        <Route path='/Add_fix' component={Add_fix}/>
-                        <Route path='/My_fix' component={My_fix}/>
-                        <Route path='/All_fix' component={Fix_all}/>
-                        <Route path='/Get_check' component={Cheklist}/>
-                        <Route path='/Report_obj' component={Report_obj}/>
-                        <Route path='/Report_income' component={Report_income}/>
-                        <Route path='/Help' component={Help}/>
-                        <Route path="*" component={Error} status={404}/>
-                    </Switch>
-                </Suspense>
-        </main>
+            <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route path='/auth' component={Auth}/>
+                <Route path='/register' component={Register}/>
+                <Route path='/signout' component={Signout}/>
+                <Route path='/price' component={Price}/>
+                <Route path='/users' component={Users}/>
+                <Route path='/objects' component={Object_table}/>
+                <Route path='/clients' component={Client}/>
+                <Route path='/add-client' component={Add_client}/>
+                <Route path='/add-users' component={Add_users}/>
+                <Route path='/add-object' component={Add_object}/>
+                <Route path='/add-price' component={Add_price}/>
+                <Route path='/add-fix' component={Add_fix}/>
+                <Route path='/my-fix' component={My_fix}/>
+                <Route path='/all-fix' component={Fix_all}/>
+                <Route path='/get-check' component={Cheklist}/>
+                <Route path='/report-obj' component={Report_obj}/>
+                <Route path='/report-income' component={Report_income}/>
+                <Route path='/help' component={Help}/>
+                <Route path="*" component={Error} status={404}/>
+            </Switch>
     );
 }
 export default Main;

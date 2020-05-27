@@ -5,27 +5,28 @@ import Nav from "react-bootstrap/Nav";
 
 class Help extends Component{
     render() {
+        // eslint-disable-next-line
         return(
             <div className='help'>
                 <div className='float-right nav-div'>
                     <Nav fill className="align-content-around position-fixed">
                         <Nav.Item>
-                            <Nav.Link href="#Auth">Вход</Nav.Link>
+                            <Nav.Link href="#auth">Вход</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="#Register">Регистрация</Nav.Link>
+                            <Nav.Link href="#register">Регистрация</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="#Pages">Страницы</Nav.Link>
+                            <Nav.Link href="#pages">Страницы</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="#Otchets">Отчёты</Nav.Link>
+                            <Nav.Link href="#otchets">Отчёты</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </div>
                 <h1 className='text-md-center'>Руководство пользователя сайтом</h1>
                 <div id="auth">
-                    <h1 className='text-md-left'><a name="Auth">Вход</a></h1>
+                    <h1 className='text-md-left'><a name="auth" href='#auth'>Вход</a></h1>
                     <p>
                         Для того, чтобы получить полные возможности сайта,
                         необходимо совершить вход в систему посредством авторизации на странице http://localhost:3000/Auth.
@@ -63,7 +64,7 @@ class Help extends Component{
                     </p>
                 </div>
                 <div id="register">
-                    <h1 className='text-md-left'><a name='Register'>Регистрация</a></h1>
+                    <h1 className='text-md-left'><a name='register' href='#register'>Регистрация</a></h1>
                     <p>
                         Для того, чтобы попасть на сайт и получить доступ ко всем его услугам,
                         необходимо совершить вход в систему, в случае если нет аккаунта, требуется регистрация на странице http://localhost:3000/Register.
@@ -117,7 +118,7 @@ class Help extends Component{
                     </p>
                 </div>
                 <div id="pages">
-                    <h1 className='text-md-left'><a name="Pages">Страницы</a></h1>
+                    <h1 className='text-md-left'><a name="pages" href='#pages'>Страницы</a></h1>
                     <p>
                         Для того, чтобы попасть на страницу к примеру "Мои услуги"
                         и получить доступ ко всем его функциям,
@@ -276,7 +277,7 @@ class Help extends Component{
                     </p>
                 </div>
                 <div id="otchets">
-                    <h1 className='text-md-left'><a name="Otchets">Отчёты</a></h1>
+                    <h1 className='text-md-left'><a name="otchets" href='#otchets'>Отчёты</a></h1>
                     <p>
                         Для того, чтобы попасть на страницу с отчётом,
                         необходимо нажать на меню "Отчёты" в правом верхнем углу любой страницы,

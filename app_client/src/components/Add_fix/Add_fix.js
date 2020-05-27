@@ -158,7 +158,7 @@ class Add_fix extends Component{
         }else
         if (this.state.serverOtvet.success){
             localStorage.setItem('fix_id',this.state.serverOtvet._id);
-            return (<Redirect to="/Get_check"/>);
+            return (<Redirect to="/get-check"/>);
         }else {
             return (
                 <div>

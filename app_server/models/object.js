@@ -28,6 +28,10 @@ let ObjectSchema = new Schema({
         type: String,
         required: false
     },
+    current_master_id: {
+        type: String,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('Object', ObjectSchema);

@@ -2,62 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb1365a-3513-48fa-b81a-a1112417be30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Help/Help.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_client/src/components/Help/Help.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_err.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_password.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Auth/Auth_res.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_max.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_obj.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_save.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Otchet/Otchet_show.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Header.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages__izm_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages__izm_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages__izm_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_add_9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_del_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_del_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_del_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_exp_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Pages/Pages_exp_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_err.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_famil.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_name.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_otchestvo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_password.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_server/public/images/Register/Register_res.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_client/Add_client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_fix/Add_fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_object/Add_object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Add_price/Add_price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Add_price/Add_price.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Cheklist/Cheklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Cheklist/Cheklist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Client/Client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix/Fix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Fix_all/Fix_all.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Help/Help.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Help/Help.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Main/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Object/Object.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Price/Price.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/components/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/components/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_client/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/models/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/models/object.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/object.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/models/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_server/result.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_server/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +91,17 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="npm.запуск сервера в автоматическом режиме">
+  <component name="RunManager" selected="npm.Запуск сервера в режиме настройки">
+    <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/app_server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="запуск сервера в автоматическом режиме" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
@@ -168,16 +142,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/app_server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="startNodemon" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="Запуск клиента" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_client/package.json" />
       <command value="run" />
@@ -188,19 +152,18 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="запуск сервера в стандартном режиме" type="js.build_tools.npm">
+    <configuration name="Запуск сервера в режиме настройки" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/app_server/package.json" />
       <command value="run" />
       <scripts>
-        <script value="start" />
+        <script value="startNodemon" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.запуск сервера в стандартном режиме" />
-      <item itemvalue="npm.запуск сервера в автоматическом режиме" />
+      <item itemvalue="npm.Запуск сервера в режиме настройки" />
       <item itemvalue="npm.Запуск клиента" />
     </list>
   </component>
@@ -256,7 +219,12 @@
       <workItem from="1589583633674" duration="90000" />
       <workItem from="1589632628133" duration="2558000" />
       <workItem from="1589657099453" duration="1598000" />
-      <workItem from="1589709763066" duration="24421000" />
+      <workItem from="1589709763066" duration="25176000" />
+      <workItem from="1589912751219" duration="633000" />
+      <workItem from="1590070296473" duration="1652000" />
+      <workItem from="1590151660010" duration="791000" />
+      <workItem from="1590483199953" duration="1105000" />
+      <workItem from="1590576465220" duration="25334000" />
     </task>
     <servers />
   </component>
@@ -288,38 +256,38 @@
     </state>
     <state x="739" y="447" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588243409890" />
     <state x="2536" y="373" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589583670003" />
-    <state width="929" height="223" key="GridCell.Tab.0.bottom" timestamp="1589725943234">
+    <state width="1892" height="419" key="GridCell.Tab.0.bottom" timestamp="1590612490494">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="929" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943234" />
+    <state width="1892" height="419" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1590612490494" />
     <state width="1572" height="177" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179620" />
     <state width="1897" height="258" key="GridCell.Tab.0.bottom/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="929" height="223" key="GridCell.Tab.0.center" timestamp="1589725943234">
+    <state width="1892" height="419" key="GridCell.Tab.0.center" timestamp="1590612490494">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="929" height="223" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943234" />
+    <state width="1892" height="419" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1590612490494" />
     <state width="1572" height="177" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179620" />
     <state width="1897" height="258" key="GridCell.Tab.0.center/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="929" height="223" key="GridCell.Tab.0.left" timestamp="1589725943233">
+    <state width="1892" height="419" key="GridCell.Tab.0.left" timestamp="1590612490494">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="929" height="223" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943233" />
+    <state width="1892" height="419" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1590612490494" />
     <state width="1572" height="177" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179619" />
     <state width="1897" height="258" key="GridCell.Tab.0.left/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
-    <state width="929" height="223" key="GridCell.Tab.0.right" timestamp="1589725943234">
+    <state width="1892" height="419" key="GridCell.Tab.0.right" timestamp="1590612490494">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="929" height="223" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589725943234" />
+    <state width="1892" height="419" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1590612490494" />
     <state width="1572" height="177" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1600.900@1920.0.1600.900" timestamp="1589580179620" />
     <state width="1897" height="258" key="GridCell.Tab.0.right/70.27.1850.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584091561239" />
     <state x="461" y="183" key="SettingsEditor" timestamp="1589404427220">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="183" key="SettingsEditor/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1589404427220" />
-    <state x="616" y="250" key="run.anything.popup" timestamp="1588968974397">
+    <state x="616" y="250" key="run.anything.popup" timestamp="1590589506017">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1588968974397" />
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080/1920.0.1600.900@0.0.1920.1080" timestamp="1590589506017" />
     <state x="616" y="193" width="672" height="676" key="search.everywhere.popup" timestamp="1589234691820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

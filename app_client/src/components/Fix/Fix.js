@@ -27,9 +27,8 @@ const MyExportCSV = (props) => {
         </div>
     );
 };
-const regExpStatus =/(^[А-ЯA-Z]{1} [а-яa-z]{1,}$)|(^[А-ЯA-Z]{1} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [А-ЯA-Z]{1}[а-яa-z]{1,}$)|(^[А-ЯA-Z]{1}[а-яa-z]{1,} [а-яa-z]{1,}$)/;
 
-class MySelect_services extends React.Component {
+class MYSELECT_SERVICES extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
@@ -58,7 +57,7 @@ class MySelect_services extends React.Component {
             },
             body: formBody
         }).then(res => res.json())
-            .then(data =>  window.location.assign('http://localhost:3000/My_fix/'))
+            .then(data =>  window.location.assign('http://localhost:3000/my_fix/'))
             .catch(err => console.log("err: =" + err));
     };
 
@@ -144,7 +143,7 @@ class MySelect_services extends React.Component {
 
 }
 
-class MySelect_objects extends React.Component {
+class MYSELECT_OBJECTS extends React.Component {
 
     constructor(props) {
         super(props);
@@ -173,7 +172,7 @@ class MySelect_objects extends React.Component {
             },
             body: formBody
         }).then(res => res.json())
-            .then(data =>  window.location.assign('http://localhost:3000/My_fix/'))
+            .then(data =>  window.location.assign('http://localhost:3000/my_fix/'))
             .catch(err => console.log("err: =" + err));
     };
 
@@ -243,7 +242,7 @@ class MySelect_objects extends React.Component {
     }
 }
 
-class MySelect_clients extends React.Component {
+class MYSELECT_CLIENTS extends React.Component {
 
     constructor(props) {
         super(props);
@@ -272,7 +271,7 @@ class MySelect_clients extends React.Component {
             },
             body: formBody
         }).then(res => res.json())
-            .then(data =>  window.location.assign('http://localhost:3000/My_fix/'))
+            .then(data =>  window.location.assign('http://localhost:3000/my_fix/'))
             .catch(err => console.log("err: =" + err));
     };
 
@@ -364,7 +363,7 @@ class My_fix extends Component{
                 sort: true,
                 selected: false,
                 editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                    <MySelect_services value={value} _id = {row._id}/>
+                    <MYSELECT_SERVICES value={value} _id = {row._id}/>
                 )
             },
             {
@@ -373,7 +372,7 @@ class My_fix extends Component{
                 sort: true,
                 selected: false,
                 editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                    <MySelect_objects value = {value} _id = {row._id}/>
+                    <MYSELECT_OBJECTS value = {value} _id = {row._id}/>
                 )
             },
             {
@@ -382,7 +381,7 @@ class My_fix extends Component{
                 sort: true,
                 selected: false,
                 editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-                    <MySelect_clients value = {value} _id = {row._id}/>
+                    <MYSELECT_CLIENTS value = {value} _id = {row._id}/>
                 )
             },
             {
@@ -429,7 +428,7 @@ class My_fix extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/My_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/my_fix/'))
                         .catch(err => console.log("err: =" + err));
 
                 },
@@ -485,7 +484,7 @@ class My_fix extends Component{
                         body:formBody
                     }).then(res => res.json())
                         .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/My_fix/'))
+                        .then(db =>  window.location.assign('http://localhost:3000/my_fix/'))
                         .catch(err => console.log("err: =" + err));
 
                 },
@@ -502,52 +501,53 @@ class My_fix extends Component{
                 text: 'Статус услуги',
                 sort: true,
                 selected: false,
-                validator: (newValue, row, column) => {
-                    if (!regExpStatus.test(newValue)) {
-                        return {
-                            valid: false,
-                            message: 'Не правильно введён статус'
-                        };
-                    }
-                    formBody = [];
-                    for (let prop in row) {
-                        if (prop === 'status'){
-                            if (prop === column.dataField){
-                                let encodedKey = encodeURIComponent(prop);
-                                let encodedValue = encodeURIComponent(newValue);
-                                formBody.push(encodedKey + "=" + encodedValue);
-                            }else {
-                                let encodedKey = encodeURIComponent(prop);
-                                let encodedValue = encodeURIComponent(row[prop]);
-                                formBody.push(encodedKey + "=" + encodedValue);
-                            }
-                        }
-                        if (prop === '_id'){
-                            if (prop === column.dataField){
-                                let encodedKey = encodeURIComponent(prop);
-                                let encodedValue = encodeURIComponent(newValue);
-                                formBody.push(encodedKey + "=" + encodedValue);
-                            }else {
-                                let encodedKey = encodeURIComponent(prop);
-                                let encodedValue = encodeURIComponent(row[prop]);
-                                formBody.push(encodedKey + "=" + encodedValue);
-                            }
-                        }
-
-                    }
-                    formBody = formBody.join("&");
-                    fetch('/api/fix/upgrade', {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body:formBody
-                    }).then(res => res.json())
-                        .then(data => this.setState({serverOtvet: data}))
-                        .then(db =>  window.location.assign('http://localhost:3000/My_fix/'))
-                        .catch(err => console.log("err: =" + err));
-                    return true;
-                },
+                editable: false
+                // validator: (newValue, row, column) => {
+                //     if (!regExpStatus.test(newValue)) {
+                //         return {
+                //             valid: false,
+                //             message: 'Не правильно введён статус'
+                //         };
+                //     }
+                //     formBody = [];
+                //     for (let prop in row) {
+                //         if (prop === 'status'){
+                //             if (prop === column.dataField){
+                //                 let encodedKey = encodeURIComponent(prop);
+                //                 let encodedValue = encodeURIComponent(newValue);
+                //                 formBody.push(encodedKey + "=" + encodedValue);
+                //             }else {
+                //                 let encodedKey = encodeURIComponent(prop);
+                //                 let encodedValue = encodeURIComponent(row[prop]);
+                //                 formBody.push(encodedKey + "=" + encodedValue);
+                //             }
+                //         }
+                //         if (prop === '_id'){
+                //             if (prop === column.dataField){
+                //                 let encodedKey = encodeURIComponent(prop);
+                //                 let encodedValue = encodeURIComponent(newValue);
+                //                 formBody.push(encodedKey + "=" + encodedValue);
+                //             }else {
+                //                 let encodedKey = encodeURIComponent(prop);
+                //                 let encodedValue = encodeURIComponent(row[prop]);
+                //                 formBody.push(encodedKey + "=" + encodedValue);
+                //             }
+                //         }
+                //
+                //     }
+                //     formBody = formBody.join("&");
+                //     fetch('/api/fix/upgrade', {
+                //         method: 'PATCH',
+                //         headers: {
+                //             'Content-Type': 'application/x-www-form-urlencoded'
+                //         },
+                //         body:formBody
+                //     }).then(res => res.json())
+                //         .then(data => this.setState({serverOtvet: data}))
+                //         .then(db =>  window.location.assign('http://localhost:3000/my_fix/'))
+                //         .catch(err => console.log("err: =" + err));
+                //     return true;
+                // },
             },
             {
                 dataField: 'etc',
@@ -562,7 +562,6 @@ class My_fix extends Component{
     componentDidMount() {
         fetch('/api/fix').then(res => res.json())
             .then(data => this.setState({products: data}))
-            .then(data => console.log(this.state.products))
             .catch(err => console.log("err: =" + err));
     };
     handleGetSelectedData = () => {
@@ -583,7 +582,7 @@ class My_fix extends Component{
             }).then(res => res.json())
                 .then(data => this.setState({serverOtvet: data}))
                 .catch(err => console.log("err: =" + err))
-                .then(del =>  window.location.assign('http://localhost:3000/My_fix'));
+                .then(del =>  window.location.assign('http://localhost:3000/my_fix'));
 
         }
 
@@ -592,6 +591,10 @@ class My_fix extends Component{
         this.setState({ rowCount: dataSize });
     };
     handleOnSelect = (row, isSelect) => {
+        if ((isSelect) && (row.status !== 'В обработке')){
+            alert('Заявка не может быть удалена, уже идёт выполнение');
+            return false;
+        }
         if (isSelect) {
             this.setState(() => ({
                 selected: [...this.state.selected, row._id]
@@ -659,7 +662,7 @@ class My_fix extends Component{
                                     props => (
                                         <div>
                                             <div className='btn-group'>
-                                                <Link to='/Add_fix'><button className="btn btn-primary btn-group">Добавить</button></Link>
+                                                <Link to='/add-fix'><button className="btn btn-primary btn-group">Добавить</button></Link>
                                                 <MyExportCSV  { ...props.csvProps }>Export</MyExportCSV >
                                                 <button className="btn btn-secondary btn-group" onClick={ this.handleGetSelectedData }>Удалить отмеченные</button>
                                             </div>
@@ -681,7 +684,7 @@ class My_fix extends Component{
                                                 hover
                                                 tabIndexCell
                                                 bordered={ false }
-                                                noDataIndication="Клиентов не существует"
+                                                noDataIndication="У вас нет заявок"
 
                                                 { ...props.baseProps }
                                             />
